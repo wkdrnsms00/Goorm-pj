@@ -22,7 +22,7 @@ node {
 
     stage('Push image') {
         
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerub') {
+        docker.withRegistry('https://hub.docker.com/repository/docker/wkdrnsms00/flask-jenkins', 'dockerub') {
             app.push("${env.BUILD_NUMBER}")
         }
     }
