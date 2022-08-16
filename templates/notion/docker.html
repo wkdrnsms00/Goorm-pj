@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Docker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container clearfix">
+            <div class="container-left clearfix">
+                <div class="logo">
+                    <a href="{{ url_for('intro.main') }}"><img
+                            src="{{ url_for('static', filename='image/goorm.png') }}"></a>
+                </div>
+                <div class="menu clearfix">
+                    <a href="/linux" class="menu-item">Linux</a>
+                    <a href="/cicd" class="menu-item">CI/CD</a>
+                    <a href="/docker" class="menu-item">Docker</a>
+                    <a href="/kubernetes" class="menu-item">Kubernetes</a>
+                    <a href="/aws" class="menu-item">Aws</a>
+                    <a href="/main/kk" class="menu-item">게시판</a>
+                </div>
+                <div class="container-right">
+                    {% if g.user %}
+                    {{ g.user.username }}님
+                    <button type="button" class="myButton" onclick="location.href='/auth/logout'">logout</button>
+                    {% else %}
+                    <button type="Button" class="myButton" onclick="location.href='/auth/login'">Login</button>
+                    <button type="Button" class="myButton" onclick="location.href='/auth/signup'">signup</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="linux">
+        <article id="a7f34929-e7a4-47ac-a618-d1c64be6287d" class="page sans">
+            <header>
+                <div class="page-header-icon undefined"><span class="icon">🤖</span></div><br>
+                <h1 class="page-title">DOCKER</h1>
+            </header>
+            <div class="page-body">
+                <p id="3b89aacd-06da-41c7-90ca-4ce99de6d139" class="block-color-gray">Docker 정리
+                </p>
+                <hr id="ef8ba649-98e2-42d4-b1ca-9f034135719a" />
+                <ul id="d4019f98-a45d-4769-b493-0abcdcd2da76" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>서버</strong>
+                        <ul id="65782bd4-e820-42c2-99b2-eadd8592b404" class="bulleted-list">
+                            <li style="list-style-type:circle">서비스를 제공하는 시스템 (컴퓨터)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul id="f49829a0-92be-41b7-b13f-e2f43972ad04" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>인프라</strong>
+                        <ul id="76676d9d-b4f2-4b47-a94f-b7870d4e608e" class="bulleted-list">
+                            <li style="list-style-type:circle">서버를 구성하는 환경</li>
+                        </ul>
+                        <ul id="6018dac4-8380-4aeb-844d-c62e4108795e" class="bulleted-list">
+                            <li style="list-style-type:circle">서버라는 시스템을 포함해서 네트워크 / 스토리지</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p id="a2ef632c-9b1d-4132-8cfd-49a420c778ea" class="">
+                </p>
+                <ul id="d89a019c-59c3-4b71-97dc-a88df5161faa" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>구성 방식</strong>
+                        <ul id="1a215023-8f4f-4c39-b610-1d637ecdbc5c" class="bulleted-list">
+                            <li style="list-style-type:circle">실제 시스템들을 이용하는 형태 (온프레미스)</li>
+                        </ul>
+                        <ul id="af933a41-f5bd-4710-bbd3-d525e87fd699" class="bulleted-list">
+                            <li style="list-style-type:circle">서버를 구성할 때<ul id="3bd35f95-dbc1-4fbd-88a7-50b014ef9a83"
+                                    class="bulleted-list">
+                                    <li style="list-style-type:square">실제 운영체제에 직접 서비스를 구성</li>
+                                </ul>
+                                <ul id="14638f4b-7991-4d14-9e77-78acf34499de" class="bulleted-list">
+                                    <li style="list-style-type:square">가상머신을 이용하는 형태</li>
+                                </ul>
+                                <ul id="ec94a9b2-9540-464b-9dd9-d38e0cdf6f5a" class="bulleted-list">
+                                    <li style="list-style-type:square">컨테이너를 이용하는 형태</li>
+                                </ul>
+                                <p id="36ae0b6a-08d5-44b0-b2cf-b03dab5a7c51" class="">
+                                </p>
+                            </li>
+                        </ul>
+                        <ul id="b6beb3ab-0b83-43c6-a15b-e97ada0c560b" class="bulleted-list">
+                            <li style="list-style-type:circle">가상 머신 이용 시<ul id="e2e5799f-f6b4-4eb2-86d0-6294d4d73de6"
+                                    class="bulleted-list">
+                                    <li style="list-style-type:square">서버 가상화</li>
+                                </ul>
+                                <ul id="a7466b30-6cc2-4c6e-81e1-b99c08d70d73" class="bulleted-list">
+                                    <li style="list-style-type:square">클라우드<ul id="e9a9dd93-c23f-4680-82c5-5cbacd322d8e"
+                                            class="bulleted-list">
+                                            <li style="list-style-type:disc">퍼블릭</li>
+                                        </ul>
+                                        <ul id="d26a3de8-1f76-48bc-8c6e-aee52d424596" class="bulleted-list">
+                                            <li style="list-style-type:disc">프라이빗(오픈스택)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul id="025dc8af-1cdd-4903-bfde-d0ce69bcb4cc" class="bulleted-list">
+                            <li style="list-style-type:circle">컨테이너<ul id="5197152b-02d5-42aa-b67e-8017233d5f59"
+                                    class="bulleted-list">
+                                    <li style="list-style-type:square">쿠버네티스</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p id="49ea8027-e481-4c74-b08a-f2d2ad665f25" class="">
+                </p>
+                <ul id="ae86db5c-652a-4331-a743-608fdec580de" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>가상화 개념</strong>
+                        <ul id="b92e20a0-66d8-440b-a9ac-e17852e275ac" class="bulleted-list">
+                            <li style="list-style-type:circle">물리적인 장치에 대해 논리적인 개념으로 구성</li>
+                        </ul>
+                        <ul id="4890d407-27a7-4560-ab1d-d1dbc4dc07be" class="bulleted-list">
+                            <li style="list-style-type:circle">논리적으로 여러 장치를 하나로 통합 혹은 하나의 장치를 여러 개로 분할 하는 기술</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p id="66832e07-0e7f-4020-b7b1-bad22b7a87b2" class="">
+                </p>
+                <ul id="fa867de1-a6f8-4ba0-b186-c0f10208d35b" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>종류</strong>
+                        <ul id="c609c44d-a44c-47e2-bebe-f8c3d9b9f205" class="bulleted-list">
+                            <li style="list-style-type:circle">시스템 가상화</li>
+                        </ul>
+                        <ul id="6d4d2709-ce10-4477-b6ed-cb00965069bf" class="bulleted-list">
+                            <li style="list-style-type:circle">네트워크 가상화 - vlan, VPN (SDN, NFV)</li>
+                        </ul>
+                        <ul id="155b4b90-2ff0-44ac-a123-53954cde3193" class="bulleted-list">
+                            <li style="list-style-type:circle">스토리지 가상화 - LVM, S3(오브젝트 스토리지) → SDS 등</li>
+                        </ul>
+                        <p id="330339bb-9596-47be-8b57-c467804604b0" class="">
+                        </p>
+                        <ul id="075e1ace-1492-4eef-bc67-b3b43b500664" class="bulleted-list">
+                            <li style="list-style-type:circle">시스템 가상화</li>
+                        </ul>
+                        <p id="28456361-0656-42bf-98dd-e1fab6a44975" class="">1) 가상머신</p>
+                        <p id="31174021-6246-496d-830b-bd6b15ad4688" class="">→ 하이퍼바이저로 관리하는 가상머신<div class="indented">
+                                <p id="5a3837cf-30ca-4d93-b576-eae05f3e7802" class="">가상의 운영체제가 포함</p>
+                                <p id="76ab722d-a8fa-479e-9d8b-e4d7fef30103" class="">리소스낭비 / 오버헤드가 증가</p>
+                            </div>
+                        </p>
+                        <p id="af6bc57a-cd28-4feb-9a17-6c272ecb0714" class="">
+                        </p>
+                        <p id="9b60bbea-a78d-481a-91e6-0378df24a39e" class="">2) 컨테이너 </p>
+                        <p id="a8588c39-5bd5-4c45-bed7-728ac8d19600" class="">→ 컨테이너런타임(엔진)으로 관리하는 컨테이너<div
+                                class="indented">
+                                <p id="311396ef-a8ce-48c1-bf7c-e01e984a58ce" class="">어플리케이션만 격리</p>
+                                <p id="232f7ed3-756f-4902-87bd-da9ca81dec2a" class="">리소스 낭비 감소 / 오버헤드도 감소</p>
+                                <p id="eeaa7786-1f3b-44c2-9de9-9789709a985e" class="">배포 속도가 빠름</p><br>
+                                <p id="a7dd92f3-1c69-474e-a3c6-e59c651dd970" class="">
+                                </p>
+                                <p id="1ed69d0c-a9db-4cd7-a2af-8c97b85684a6" class="">
+                                </p>
+                            </div>
+                        </p>
+                    </li>
+                </ul>
+                <h1 id="f369ce67-a2b5-4ee1-9eb2-d9bf163e482e" class="">도커(DOCKER)</h1>
+                <hr id="362a31c8-eb3f-4acc-b223-2c65677af403" />
+                <ul id="14c751b6-e178-413c-90d6-77e317bf7503" class="bulleted-list">
+                    <li style="list-style-type:disc">리눅스 컨테이너를 관리하는 컨테이너 런타임(엔진)중의 하나</li>
+                </ul>
+                <ul id="929b2005-95f3-4837-9921-0a9aa070e875" class="bulleted-list">
+                    <li style="list-style-type:disc">컨테이너 런타임은 컨테이너를 생성/관리 역할</li>
+                </ul>
+                <ul id="bb878a45-edf3-4fa2-9ca3-2e8c0622fbce" class="bulleted-list">
+                    <li style="list-style-type:disc">리소스들에 대한 격리 ( 프로세스 / 파일시스템)</li>
+                </ul>
+                <p id="b0b0d440-cf4e-4aec-b31e-8ac331c19b23" class="">
+                </p>
+                <p id="90b099fa-2791-428a-bd42-f28700c1bd5b" class=""><strong>이미지 </strong></p>
+                <p id="1633d19c-2981-4d9d-90ed-cf1b30242df5" class="">⇒ 어플리케이션 실행에 있어서 필요한 파일들의 집합</p>
+                <p id="d7664ddf-bc72-45c0-bf62-7c2cd9dee6ed" class="">
+                </p>
+                <p id="f8692215-5035-4ca2-9d65-04483456aaaf" class=""><strong>컨테이너 </strong></p>
+                <p id="7179e814-8db1-4405-8b68-10a15964a8f5" class="">⇒ 이미지를 실행한 상태<div class="indented">
+                        <p id="dc2924db-1198-459a-967b-55d9618b5349" class="">실행파일 : 프로세스 = 이미지 : 컨테이너</p>
+                        <p id="88f71553-eb00-4503-b1b7-e68c12e22484" class="">
+                        </p>
+                        <p id="889049e8-4a20-421d-a519-90d9821a2c76" class="">
+                        </p>
+                    </div>
+                </p>
+                <ul id="b7225fb1-aa4e-4f26-af2e-d6d24b6a3ddd" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>기능</strong>
+                        <ol type="1" id="58834ed3-6e7c-4c9e-ba92-c39acd350b13" class="numbered-list" start="1">
+                            <li>이미지 생성</li>
+                        </ol>
+                        <ol type="1" id="f5943c76-8e29-4fcd-9dc0-c3a13d44098a" class="numbered-list" start="2">
+                            <li>이미지 공유</li>
+                        </ol>
+                        <ol type="1" id="f226e605-6138-473a-8737-ba1c5c408853" class="numbered-list" start="3">
+                            <li>컨테이너 실행</li>
+                        </ol>
+                    </li>
+                </ul>
+                <p id="47eeebb2-321c-4647-9b6b-7260f65e3a7f" class="">
+                </p>
+                <ul id="eedddb75-4c0c-43c5-818b-013dbf4a9a58" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>오브젝트 </strong>
+                        <ol type="1" id="05906bee-da71-4fa8-aacd-dfaffdeaea91" class="numbered-list" start="1">
+                            <li>이미지 </li>
+                        </ol>
+                        <ol type="1" id="7ba99e7b-b217-4e15-8ed1-92dd5f1b5fd6" class="numbered-list" start="2">
+                            <li>컨테이너</li>
+                        </ol>
+                        <ol type="1" id="3072f881-7222-4c2e-acb6-a8b5e3037ca1" class="numbered-list" start="3">
+                            <li>네트워크</li>
+                        </ol>
+                        <ol type="1" id="cff25e2e-0bd3-4fec-8451-01dc6109acc1" class="numbered-list" start="4">
+                            <li>볼륨</li>
+                        </ol>
+                    </li>
+                </ul>
+                <p id="c0957b55-26c4-41ee-bbd1-63d9bd680d10" class="">
+                </p>
+                <ul id="eb14319b-7dcb-4d2c-a364-8781351f9a06" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>기반 기술</strong> (원래 있는거)<ul
+                            id="b7d47fdd-554f-48c1-99fe-26b17bf0be9f" class="bulleted-list">
+                            <li style="list-style-type:circle">namespace (이름공간) : 각각의 리소스를 격리</li>
+                        </ul>
+                        <ul id="9a6d5165-b3cd-46ee-9a5d-4b539b213a7a" class="bulleted-list">
+                            <li style="list-style-type:circle">cgroup (컨트롤그룹) : 리소스 관리를 위한 그룹</li>
+                        </ul>
+                        <ul id="3977acab-4a59-472a-9045-df2b8abeaee9" class="bulleted-list">
+                            <li style="list-style-type:circle">가상브릿지/vNIC : 컨테이너에서 사용할 네트워크 환경을 제공하기 위한 기능</li>
+                        </ul>
+                        <ul id="efab03fb-2315-4016-b91e-a7af4cf0233d" class="bulleted-list">
+                            <li style="list-style-type:circle">파일시스템 : 컨테이너의 데이터 관리를 위해</li>
+                        </ul>
+                        <p id="3d9bd63c-14b5-4609-915f-c86ede6c1eb9" class="">
+                        </p>
+                    </li>
+                </ul>
+                <p id="63c8849b-3d77-49db-8a8e-c306955083e8" class="">
+                </p>
+                <ul id="9561e230-47b2-4cfd-873b-f06fd523cbc6" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>도커 사용 시 사용자</strong>
+                        <ol type="1" id="7d13f28d-4a7b-45ba-99b3-327fae503c85" class="numbered-list" start="1">
+                            <li>root 사용자 </li>
+                        </ol>
+                        <ol type="1" id="0eefd0d4-9d4b-4da6-9e14-1223b077c6cc" class="numbered-list" start="2">
+                            <li>sudo 명령어 사용 가능한 사용자</li>
+                        </ol>
+                        <ol type="1" id="577d77d7-2b11-4d19-aa67-3c28a7794bbf" class="numbered-list" start="3">
+                            <li>docker 그룹의 구성원</li>
+                        </ol>
+                    </li>
+                </ul>
+                <p id="2c004b77-2bf2-4e55-a16e-58a48f4e08a7" class="">
+                </p>
+                <ul id="ecb60882-a2eb-4643-a2a5-9e12b0a39ee9" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>도커 이미지</strong>
+                        <ol type="1" id="1d9cd613-e394-4cfa-8370-4083c55ae6a5" class="numbered-list" start="1">
+                            <li>이미지 이름 <p id="c0e20c9e-d741-4c90-a654-c1baf61b8871" class="">이미지명 : 태그</p>
+                                <p id="f948ea33-ae20-4c11-bd53-2786a416fec1" class="">→ 이미지명은 일반적으로 어플리케이션 종류 태그는 버전인
+                                    경우가 다수</p>
+                                <p id="9167a647-e323-4cee-9a55-43ac8287391c" class="">
+                                </p>
+                            </li>
+                        </ol>
+                        <ol type="1" id="3a33d2fe-6cf3-40c0-b633-6eb09a9ac134" class="numbered-list" start="2">
+                            <li>명령어</li>
+                        </ol>
+                        <ul id="04582168-08ca-418f-8bc8-8be324da7b56" class="bulleted-list">
+                            <li style="list-style-type:circle">docker image pull : 사용할 이미지를 다운로드 ( 기본적으로는 docker hub 에서)
+                            </li>
+                        </ul>
+                        <ul id="86d187f2-e803-430d-a0b7-b3d3b7c3d003" class="bulleted-list">
+                            <li style="list-style-type:circle">docker image ls : 다운로드한 이미지 목록 확인</li>
+                        </ul>
+                        <ul id="2550279c-4306-4760-b13b-054e90dfcd77" class="bulleted-list">
+                            <li style="list-style-type:circle">docker image rm : 로컬 이미지를 삭제</li>
+                        </ul>
+                        <ul id="206b1d78-c6a3-4385-967c-fd84e9ae02fb" class="bulleted-list">
+                            <li style="list-style-type:circle">docker image inspect : 로컬 이미지의 상세정보 확인</li>
+                        </ul>
+                        <p id="bdd814b7-b481-40dd-a4ce-c4d07c0d43b5" class="">
+                        </p>
+                        <p id="3e1b1948-e56e-4913-b5d0-39853f411c8c" class="">** 참고 </p>
+                        <p id="91afa10e-f655-4373-a0a3-95ab06c387b8" class="">이미지의 태그는 생략하면 무조건 latest 로 지정 가급적이면 특정 태그를
+                            지정해주는 것이 좋음</p>
+                        <p id="11b710d8-7afc-45cf-8931-e2b31a319e9d" class="">latest 는 사용하지 않는 것을 권장</p>
+                        <p id="ee5a0966-fc07-4169-9208-cff81a485f62" class="">
+                        </p>
+                    </li>
+                </ul>
+                <ul id="9eb2642f-963a-4132-9a27-2ffdc0ed1d65" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>컨테이너 관리 명령어 </strong>
+                        <ul id="5ad839aa-c059-435c-919a-4e1385ea92f4" class="bulleted-list">
+                            <li style="list-style-type:circle">docker container create : 컨테이너 생성</li>
+                        </ul>
+                        <ul id="b492e83a-5cd1-481c-9207-0531e699e353" class="bulleted-list">
+                            <li style="list-style-type:circle">docker container start : 생성한 컨테이너를 실행</li>
+                        </ul>
+                        <ul id="784da26d-e9b3-4105-8b72-9f6eae0a9509" class="bulleted-list">
+                            <li style="list-style-type:circle">docker container run : 생성 + 실행</li>
+                        </ul>
+                        <p id="62413bfc-a7e9-4118-a05e-bc9fbeca88e6" class="">
+                            <div class="indented">
+                                <ul id="299bd352-9241-465c-b53f-e692ac68ff81" class="bulleted-list">
+                                    <li style="list-style-type:disc">create 중요 옵션</li>
+                                </ul>
+                                <p id="f800eda6-3884-4cc3-958d-5241c44c72d6" class="">-it : 입출력이 필요한 경우 (쉘을 실행할 때)</p>
+                                <p id="b65a1146-91fe-4ede-a11a-f0f0eb7212aa" class="">—rm : 컨테이너 종료 시 자동 삭제</p>
+                                <p id="291865f9-0825-4bd9-af71-92b2fce6cdce" class="">—name : 컨테이너 이름 지정</p>
+                                <p id="0cde787e-6b23-4a81-a914-2f2f46d60a18" class="">
+                                </p>
+                                <ul id="8a3f7578-d942-4d93-94a2-ac6c59a77833" class="bulleted-list">
+                                    <li style="list-style-type:disc">start 옵션</li>
+                                </ul>
+                                <p id="9317c7a4-61df-4847-ac9d-2a464af32076" class="">-ai : 입출력이 필요한 경우 사용 (create 에서
+                                    -it 필수)</p>
+                                <p id="bfb2be19-d77b-436d-b4ae-32b193b4cfd2" class="">
+                                </p>
+                                <ul id="c1274645-2da4-4243-b309-11136e16dbba" class="bulleted-list">
+                                    <li style="list-style-type:disc">run 옵션</li>
+                                </ul>
+                                <p id="6a7900c0-fd6d-4824-86a7-ad24a97d49fd" class="">-it : 입출력이 필요한 경우 (자동연결)</p>
+                                <p id="e552b0f9-f99f-4dff-ad77-f7ff43621a6e" class="">-d : 연결이 불필요한 경우 (백그라운드 실행)</p>
+                                <p id="c1053f6e-5860-4096-b4b9-de0154c72ec3" class="">
+                                </p>
+                                <ul id="03fd06b4-44dd-45f6-ac72-5acf9b4cfda0" class="bulleted-list">
+                                    <li style="list-style-type:disc">편의 옵션</li>
+                                </ul>
+                                <p id="015cf905-c9f9-4373-98df-071da013f76c" class="">—rm</p>
+                                <p id="5f86b521-8e0c-454d-bad5-9c4662c9e75a" class="">—name</p>
+                                <p id="6f3a91dc-d03c-4470-81cb-30e67586d70f" class="">…</p>
+                                <p id="f00a984c-feef-47e0-b179-6820d0301072" class="">
+                                </p>
+                            </div>
+                        </p>
+                        <ul id="3828419a-8882-455f-81bd-d9983b172678" class="bulleted-list">
+                            <li style="list-style-type:circle">docker container ls : 컨테이너 목록 확인 → docker ps 로 줄여서 사용, 사용
+                                시 -a 옵션으로 중지 상태의 컨테이너까지 확인가능</li><br>
+                        </ul>
+                        <p id="8ce6aeb9-d30a-4179-bace-bcd5faa39012" class="">
+                        </p>
+                    </li>
+                </ul>
+                <ul id="33693ddf-4dd9-446a-9906-7082329daa9a" class="bulleted-list">
+                    <li style="list-style-type:disc"><strong>컨테이너 생성 및 실행 시 주의 사항</strong>
+                        <ul id="b3352056-055c-4bd5-be83-9a8435ff5402" class="bulleted-list">
+                            <li style="list-style-type:circle">이미지 종류에 따라 (실행하는 프로세스) 옵션이 다름</li>
+                        </ul>
+                        <ul id="037db4b0-fc24-40a5-9c95-77a563376779" class="bulleted-list">
+                            <li style="list-style-type:circle">쉘을 실행하는 이미지는 생성 시 필수적으로 -it 옵션 필요 → 입출력장치 연결<p
+                                    id="e4200898-61ff-4ab1-a0bc-f803654fa742" class="">실행 시 -ai 옵션을 사용할 경우만 연결</p>
+                            </li>
+                        </ul>
+                        <ul id="238e8848-4276-4cc9-a39b-e2dc9d7acbe9" class="bulleted-list">
+                            <li style="list-style-type:circle">서비스(데몬프로세스)를 실행하는 이미지는 생성 시 옵션 불필요 <p
+                                    id="b633db07-4464-449b-9f8d-b788ed2dc793" class="">실행 시 옵션(-ai) 사용하면 이후 작업 불가</p>
+                            </li>
+                        </ul>
+                        <ul id="ab033835-20e6-4a1d-a20b-e1d45a874221" class="bulleted-list">
+                            <li style="list-style-type:circle">run 명령어 사용 시에는 -it 옵션은 동일 → 연결이 필요없는 경우는 -d 옵션 사용 (데몬프로세스
+                                종류들)</li>
+                        </ul>
+                        <p id="16621845-4d83-4a97-8925-4f23a49fd9b9" class="">
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</body>
+
+</html>

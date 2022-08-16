@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Linux</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+</head>
+
+<body>
+	<div class="header">
+		<div class="container clearfix">
+			<div class="container-left clearfix">
+				<div class="logo">
+					<a href="{{ url_for('intro.main') }}"><img
+							src="{{ url_for('static', filename='image/goorm.png') }}"></a>
+				</div>
+				<div class="menu clearfix">
+                    <a href="/linux" class="menu-item">Linux</a>
+                    <a href="/cicd" class="menu-item">CI/CD</a>
+                    <a href="/docker" class="menu-item">Docker</a>
+                    <a href="/kubernetes" class="menu-item">Kubernetes</a>
+                    <a href="/aws" class="menu-item">Aws</a>
+                    <a href="/main/kk" class="menu-item">게시판</a>
+				</div>
+				<div class="container-right">
+					{% if g.user %}
+					{{ g.user.username }}님
+					<button type="button" class="myButton" onclick="location.href='/auth/logout'">logout</button>
+					{% else %}
+					<button type="Button" class="myButton" onclick="location.href='/auth/login'">Login</button>
+					<button type="Button" class="myButton" onclick="location.href='/auth/signup'">signup</button>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="linux">
+		<article id="c49523f0-5f09-41bb-acbc-407a6ebcc4bc" class="page sans">
+			<header>
+				<div class="page-header-icon undefined"><span class="icon">🤖</span></div><br>
+				<h1 class="page-title">LINUX</h1>
+			</header>
+			<div class="page-body">
+				<p id="e8db772c-0964-41a6-97ac-99937c3f6c0d" class="block-color-gray">Linux 정리<br>
+				</p>
+				<hr id="6e9cd98f-1e16-47dc-9718-b299a77d968d" />
+				<ul id="11721587-5e3f-47c7-b902-03ddffe3e414" class="bulleted-list">
+					<li style="list-style-type:disc">Kernel : 핵심 Interface로 하드웨어와 사용자 사이에서 자원 처리</li>
+				</ul>
+				<ul id="dead8b81-a8b2-432b-b087-e491a22d5cec" class="bulleted-list">
+					<li style="list-style-type:disc">Shell : 사용자가 입력하는 명령어를 이해하고 처리하는 프로그래밍 계층</li>
+				</ul>
+				<ul id="614a3076-847d-46f0-a8dd-7e19e773f886" class="bulleted-list">
+					<li style="list-style-type:disc">Directory: Home (사용자가 파일 생성 및 삭제) Work (명령어 실행) </li>
+				</ul>
+				<ul id="0b316287-67b0-49ed-bf97-c7325b1682b0" class="bulleted-list">
+					<li style="list-style-type:disc">핵심 명령어 : Command [Option]..[Argument]..<ul
+							id="178b6cb3-7e18-41e6-883d-3f4383e0cd76" class="bulleted-list">
+							<li style="list-style-type:circle">uname -s (os 종류) -r (커널 버전)</li>
+						</ul>
+						<ul id="a3244075-23d7-45d2-862c-4346c8e69403" class="bulleted-list">
+							<li style="list-style-type:circle">grep -i (문자에 상관없이),-n (숫자와 함께), -v(을 제외하고), -c(넘버링과 함께),
+								-w (단어마다) …. [파일명] : 파일 내에서 문자열 검색</li>
+						</ul>
+						<ul id="22ca982e-9457-48d1-9a0b-eed6d0dafafe" class="bulleted-list">
+							<li style="list-style-type:circle">cp A(를) B(로), cp A,B,C(들을) 폴더(로) 복사, rm -r 폴더 삭제, rm -rf
+								폴더 (서브를 포함하여 삭제)</li>
+						</ul>
+						<ul id="bb579427-0807-4e5a-8c28-4f1ed3b81bae" class="bulleted-list">
+							<li style="list-style-type:circle">locate 패턴, find 경로 찾기</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="a830151e-997d-410e-ac38-ea2308a73973" class="bulleted-list">
+					<li style="list-style-type:disc">LINK<ul id="58d41c45-80dc-4ad0-ab5f-aaed6de5c323"
+							class="bulleted-list">
+							<li style="list-style-type:circle">Hard Link : 파일의 물리적 주소 연결, i-node 값과 파일에 대한 권한 공유, 원본과 같기
+								때문에 원본이 지워져도 이용 가능 . In 명령어</li>
+						</ul>
+						<ul id="e055e490-c171-4241-a7a2-844e72e34f41" class="bulleted-list">
+							<li style="list-style-type:circle">Symbolic Link: 파일과 폴더의 논리적 주소 연결, i-node 공유하지 않고 원본과 구분되기
+								때문에 원본이 지워지면 사용 불가. In -s 명령어</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="41b6a1a5-312d-483e-8a3f-228286964c2a" class="bulleted-list">
+					<li style="list-style-type:disc">Vi Editor 핵심 명령어<ul id="5a0337b3-f12b-4bf1-98f0-b17b27bcc9ce"
+							class="bulleted-list">
+							<li style="list-style-type:circle">Command Mode ( Default ): COPY (yy,yw), PASTE (p), DELETE
+								(dd,dw), MOVE ( number G) </li>
+						</ul>
+						<ul id="33c989dc-3cc5-463b-bd6e-cbd02514bb63" class="bulleted-list">
+							<li style="list-style-type:circle">Edit mode : INSERT, REPLACE</li>
+						</ul>
+						<ul id="f99766ef-1cf4-4ebd-ab49-d6ad17f8804e" class="bulleted-list">
+							<li style="list-style-type:circle">Extended Mode (Setting, write and quit, search and
+								exchange) : :wq (저장 후 나가기), : x 경로/파일명 (새로운 파일로 저장), :set number (넘버링)</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="c461bb15-7f20-4428-bf13-0b497b244831" class="bulleted-list">
+					<li style="list-style-type:disc">Archive : 파일 압축 형식에 따라 네 가지 분류<ul
+							id="7e788fc7-bcd4-44c7-aea7-bdc494335c0d" class="bulleted-list">
+							<li style="list-style-type:circle">TAR_FILE : $ tar cf,cvf</li>
+						</ul>
+						<ul id="347a10d9-ac1d-4d44-b573-b9e5c476132b" class="bulleted-list">
+							<li style="list-style-type:circle">TAR_GZIP_FILE : $ tar zcf,zcvf</li>
+						</ul>
+						<ul id="bccb8b1e-6b71-40aa-a30e-049bca939294" class="bulleted-list">
+							<li style="list-style-type:circle">TAR_BZIP2_FILE : $ tar jcf,jcvf</li>
+						</ul>
+						<ul id="d5eccc6c-f20a-46f2-bd14-f27d27d7741d" class="bulleted-list">
+							<li style="list-style-type:circle">TAR_XJ_FILE : $ tar Jcf,Jcvf</li>
+						</ul>
+						<ul id="ca1df576-3c5c-426e-999a-797549591c3a" class="bulleted-list">
+							<li style="list-style-type:circle">각각 f 앞 알파벳을 t로 (파일 리스트), x로 (발행) 변경해주면 기능 변경</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="27e989e8-4bee-4132-a15c-0d5c2248ca21" class="bulleted-list">
+					<li style="list-style-type:disc">처리 <ul id="237554e3-cf2f-4bde-a2eb-c93686ab7664"
+							class="bulleted-list">
+							<li style="list-style-type:circle">프로그램이란 소스 코드로 만들어져 보조기억장치에 저장되는 이진 파일</li>
+						</ul>
+						<ul id="283a7ff0-6638-48fa-b8af-82937647a308" class="bulleted-list">
+							<li style="list-style-type:circle">처리란 프로그램을 메모리에 적재하여 CPU에 의해 실행하는것<ul
+									id="2cd9915b-50c3-4b0f-84ba-09ba626b6bbc" class="bulleted-list">
+									<li style="list-style-type:square">ps -ef | grep [Pattern]: 패턴을 포함하는 실행중인 프로세스 찾기
+									</li>
+								</ul>
+								<ul id="4cf42af6-ef09-4242-89b3-7b2d67c8f50b" class="bulleted-list">
+									<li style="list-style-type:square">ps aux : 시스템 상에서 실행중인 프로세스 자세히 검색</li>
+								</ul>
+								<ul id="88dbba4e-426a-484e-8705-be302dd33aa6" class="bulleted-list">
+									<li style="list-style-type:square">kill -9 Pidnumber : 해당 넘버를 가진 프로세스 종료</li>
+								</ul>
+								<ul id="133b65fe-4c8e-40fb-a378-1b8dd5e4780b" class="bulleted-list">
+									<li style="list-style-type:square">pstree -p : 프로세스를 pid값을 가진 트리형태로 정렬</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="bec19c93-10eb-4913-a1df-9609b99c8d9e" class="bulleted-list">
+					<li style="list-style-type:disc">스케쥴링 (작업 예약) <ul id="e5d42aac-5015-4b2f-beaf-30df49335b35"
+							class="bulleted-list">
+							<li style="list-style-type:circle">at : 한 번만<ul id="a6598c2a-55eb-44c0-99d7-d08a11c7e8c0"
+									class="bulleted-list">
+									<li style="list-style-type:square">at -l, atq : 실행 대기중인 프로세스 리스트</li>
+								</ul>
+								<ul id="18c02931-6bcc-4ba7-a2a6-7440dcc28bca" class="bulleted-list">
+									<li style="list-style-type:square">at -d, atrm : 삭제</li>
+								</ul>
+							</li>
+						</ul>
+						<ul id="1f72fb0e-6909-4d39-b972-b5f5bf42334e" class="bulleted-list">
+							<li style="list-style-type:circle">crontab: 주기적으로<ul
+									id="b7b02990-a0a4-4e6a-a6de-6a074ec769bb" class="bulleted-list">
+									<li style="list-style-type:square">crontab -e (생성 및 편집) -l (리스트) -r (삭제)</li>
+								</ul>
+								<ul id="08329c2a-1e9b-4f03-bffc-7d3d196d53ca" class="bulleted-list">
+									<li style="list-style-type:square">크론탭에 의해 크론이 실행됨<ul
+											id="161b7779-426f-4732-b823-009912f1d770" class="bulleted-list">
+											<li style="list-style-type:disc">시스템 크론: /etc/crontab, /etc/cron.d</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="5e0adc91-ba0b-4ddc-86a0-ff7eed72368e" class="bulleted-list">
+					<li style="list-style-type:disc">파일과 사용자<ul id="8493926f-0265-4aaa-bad1-e268c540cb83"
+							class="bulleted-list">
+							<li style="list-style-type:circle">접근 허용<ul id="1b967280-35f4-4d44-9ce2-e3da5d12496e"
+									class="bulleted-list">
+									<li style="list-style-type:square">사용자/그룹/그외에 에게 RWX 권한 부여 (2^2,2^1,2^0 으로 차례대로
+										4,2,1번 권한)</li>
+								</ul>
+								<ul id="39ea6a96-0a06-413a-82da-20bcef21db2f" class="bulleted-list">
+									<li style="list-style-type:square">chmod [option] 폴더나파일 : chmod 444 A.txt</li>
+								</ul>
+								<ul id="ad33591a-d836-4ceb-9b2f-d8db32e39bad" class="bulleted-list">
+									<li style="list-style-type:square">사용자에 대한 기본 세팅은 /etc/profile, ~/.profile,
+										~/.bash_rc 에 </li>
+								</ul>
+								<ul id="f572203c-1a56-4edf-9527-3622f91c2e94" class="bulleted-list">
+									<li style="list-style-type:square">숫자가 4개인 권한은 특수권한<ul
+											id="f20062dd-2f4e-47a0-adef-c478b0c56ac7" class="bulleted-list">
+											<li style="list-style-type:disc">setuid: 파일 소유권자와 같은 권한으로, 4***, ex)chmod
+												4755 set.exe 하면 -rwsr-xr-x</li>
+										</ul>
+										<ul id="20d11b0e-2fe9-4c26-a5d3-350adcca2dc2" class="bulleted-list">
+											<li style="list-style-type:disc">setgtd: 파일 소유그룹과 같은 권한으로, 6***</li>
+										</ul>
+										<ul id="74c5407f-a967-4e91-845c-2bcf1fefd0a8" class="bulleted-list">
+											<li style="list-style-type:disc">sticky bit: 누구나 파일 및 폴더를 만들 수 있으나 삭제는 소유자나
+												루트만 가능, 1***</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<ul id="4040306e-7d42-4092-b8f0-bdd62ddc8e8a" class="bulleted-list">
+							<li style="list-style-type:circle">DISK<ul id="8c1c6f55-709f-4651-8475-7d7c787543e3"
+									class="bulleted-list">
+									<li style="list-style-type:square">Serctor &gt; Track &gt; Cylinder &gt; Partition
+										&gt;<strong> Disk</strong></li>
+								</ul>
+								<ul id="264d3982-833c-45df-99ab-c2d80464843a" class="bulleted-list">
+									<li style="list-style-type:square">파티션 타입 : MBR, GPT, df -Th 명령어로 조회 </li>
+								</ul>
+								<ul id="765bd3ac-0140-4b40-bb53-1688dcb3a4e1" class="bulleted-list">
+									<li style="list-style-type:square">인터페이스 (디스크에 연결) 타입 : E-IDE,SATA,SCSI,SA-SCSI(SAS)
+									</li>
+								</ul>
+								<ul id="ab40d17c-23b6-4d6e-82cf-6ac574ccc4ff" class="bulleted-list">
+									<li style="list-style-type:square">파일 시스템 (디스크 관리) : FAT32, NTFS (Windows), ext4
+										(Linux), xfs (Redhat), ufs (Unix), zfs (Solaris)</li>
+								</ul>
+								<ul id="9f11df52-d3e9-462a-bd93-a396dd3063f2" class="bulleted-list">
+									<li style="list-style-type:square">Disk 파티션 과정<ul
+											id="dd6c736d-86cf-4adf-a5d4-d75897ffa46d" class="bulleted-list">
+											<li style="list-style-type:disc">설치 및 인식</li>
+										</ul>
+										<ul id="5ee784d6-b25c-4240-b5cc-bd1f001eb9f5" class="bulleted-list">
+											<li style="list-style-type:disc">파티셔닝<ul
+													id="d875dfd1-b76c-409d-a5b8-53aec5dd2cf4" class="bulleted-list">
+													<li style="list-style-type:circle">fdisk -l : 디스크 정보 확인 후 MBR에 파티셔닝할
+														장치 선택</li>
+												</ul>
+												<ul id="3b6d1581-eb0c-427b-a5a9-87521dd23084" class="bulleted-list">
+													<li style="list-style-type:circle">fdisk /dev/sdb</li>
+												</ul>
+											</li>
+										</ul>
+										<ul id="16832711-4509-411a-a156-aee4eaf82d13" class="bulleted-list">
+											<li style="list-style-type:disc">File System 설치<ul
+													id="9916e353-e083-4d8f-aeb7-b91463abba22" class="bulleted-list">
+													<li style="list-style-type:circle">mkfs -t ext4 /dev/sdb1, mkfs -t
+														xfs /dev/sdb2</li>
+												</ul>
+											</li>
+										</ul>
+										<ul id="de735b8f-e196-42ec-a729-c39eba48fbc4" class="bulleted-list">
+											<li style="list-style-type:disc">mount<ul
+													id="71d36da6-bb9f-4cf4-a938-f17dabbf02a0" class="bulleted-list">
+													<li style="list-style-type:circle">mkdir /test1,2,3</li>
+												</ul>
+												<ul id="e60e028f-94bf-4d8b-8b52-c0687615c61a" class="bulleted-list">
+													<li style="list-style-type:circle">mount /dev/sdb1 /test1, mount
+														/dev/sdb2/test2</li>
+												</ul>
+												<ul id="edb11761-2fbc-4350-9c7a-23773b1e323b" class="bulleted-list">
+													<li style="list-style-type:circle">/etc/fstab (부팅시 자동 마운트)</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<ul id="9169d453-5ae4-419b-bfb4-5de05008346b" class="bulleted-list">
+									<li style="list-style-type:square">Disk Logical Volume 사용 과정<ul
+											id="46d7f28b-56fd-411c-9095-e6fd9046aaa6" class="bulleted-list">
+											<li style="list-style-type:disc">LVM : 디스크 크기에 구애 받지 않도록 다수의 디스크를 유연하게 사용
+											</li>
+										</ul>
+										<ul id="9e19b6c0-bf88-498e-8b0d-420f78871554" class="bulleted-list">
+											<li style="list-style-type:disc">파티셔닝 &gt; Physical Volume으로 전환 &gt; PVs 를
+												볼륨 그룹에 바인드 &gt; LV로 전환<ul id="bb2116cd-d1a9-4d87-9a0e-f2b7720efe7e"
+													class="bulleted-list">
+													<li style="list-style-type:circle">fdisk /dev/sdb s</li>
+												</ul>
+												<ul id="efa4867e-e8a2-457c-81bc-3a4c657ee426" class="bulleted-list">
+													<li style="list-style-type:circle">pvcreate /dev/sdb</li>
+												</ul>
+												<ul id="74cc29bb-600b-4e8b-9837-459910046726" class="bulleted-list">
+													<li style="list-style-type:circle">vgcreate grp1 /dev/sdb1</li>
+												</ul>
+												<ul id="9fa6de97-fc2b-4b01-af84-e2a393bfe63c" class="bulleted-list">
+													<li style="list-style-type:circle">lvcreate -l 248 grpl -n mylvm1
+													</li>
+												</ul>
+												<ul id="9b793b52-1882-4755-8ee9-4ca38bdf1c96" class="bulleted-list">
+													<li style="list-style-type:circle">mkfs.ext4 /dev/grp1/mylvm1</li>
+												</ul>
+												<ul id="70b1c880-9c68-4c36-b4f6-fd0068385837" class="bulleted-list">
+													<li style="list-style-type:circle">mkdir /mnt/lvm, mount
+														/dev/grp1/mylvm1 /mnt/lvm</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="d22d31df-e0c9-481c-9b1c-a62eb1e7333c" class="bulleted-list">
+					<li style="list-style-type:disc">Systemctl<ul id="7a662c2b-d4ed-45d8-be15-b451bef47d58"
+							class="bulleted-list">
+							<li style="list-style-type:circle">init 명령어를 대체하기 위한 Systemd 명령어</li>
+						</ul>
+						<ul id="68651e3c-e8c7-4b6b-866a-78b5de3ac146" class="bulleted-list">
+							<li style="list-style-type:circle">명령어 구조 systemctl [option][command][unitname]<ul
+									id="68810f39-4648-4b5b-beef-baf544cbf826" class="bulleted-list">
+									<li style="list-style-type:square">command : status, start, restart enable, stop,
+										disable, mak, umask, reload, isolate</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="901517fa-00dc-463b-b97e-6f3829fef766" class="bulleted-list">
+					<li style="list-style-type:disc">Log<ul id="45c6880a-4ea2-4d2d-8db8-8c998d1cb368"
+							class="bulleted-list">
+							<li style="list-style-type:circle">rsyslogd (/var/log, syslog)에 의한 로그 관리와 systemd-journald
+								(/run/log/journal, journal data)에 의한 로그 관리로 나뉨<ul
+									id="e51350d5-5c66-43b2-89c6-a7282fd58b80" class="bulleted-list">
+									<li style="list-style-type:square">rsyslogd<ul
+											id="c84be903-0b38-46d7-b83a-0ca832f1f2ff" class="bulleted-list">
+											<li style="list-style-type:disc">/etc/rsyslog.co에 로그 유형과 우선순위 설정 되어 있음</li>
+										</ul>
+										<ul id="49439799-a1dc-487d-86d1-89db322c224a" class="bulleted-list">
+											<li style="list-style-type:disc"> 우선순위 0(높음)~7(낮음)</li>
+										</ul>
+										<ul id="0d62df78-65d7-4b40-9cbb-c9f800b7a825" class="bulleted-list">
+											<li style="list-style-type:disc">조치: authpriv (보안,인증), omusrmag (사용자 지정)
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<ul id="75efcc02-ad90-4ac7-a8f4-3c7d50cf9148" class="bulleted-list">
+									<li style="list-style-type:square">systemd-journald<ul
+											id="cd044e14-ce1d-40a1-8834-4bd8416d73ac" class="bulleted-list">
+											<li style="list-style-type:disc">journalctl -r reads only (이진파일리고 휘발성)</li>
+										</ul>
+										<ul id="ecf98a2d-1448-411c-b9e8-3214aa599979" class="bulleted-list">
+											<li style="list-style-type:disc">영구파일로 저장하려면 <ul
+													id="4dfbd5db-de5b-44d4-ab22-52819f2957c3" class="bulleted-list">
+													<li style="list-style-type:circle">mkdir /var/log/journal</li>
+												</ul>
+												<ul id="2c9bf93b-774a-4caf-b3d6-4f4d886feb54" class="bulleted-list">
+													<li style="list-style-type:circle">chown root:systemd-journal</li>
+												</ul>
+												<ul id="ad2b641f-c4c9-4134-965d-87f38b7dc739" class="bulleted-list">
+													<li style="list-style-type:circle">systemctl reater systemd-journald
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<ul id="f8725f71-5b76-4339-8fd3-96847e65f6b9" class="bulleted-list">
+							<li style="list-style-type:circle">logger<ul id="3fd01c3f-c218-4337-844f-f29258a30e8b"
+									class="bulleted-list">
+									<li style="list-style-type:square">/var/log/messages에 저장됨</li>
+								</ul>
+								<ul id="48c9cfee-00db-4bc2-bf56-bc21a238603b" class="bulleted-list">
+									<li style="list-style-type:square">logger -p (priority) <a
+											href="http://cron.info">cron.info</a> “cronlog1”</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="03cae891-aae1-4e93-9512-bc297a7d767c" class="bulleted-list">
+					<li style="list-style-type:disc">Software Package<ul id="1c4331b1-2fa0-4445-b814-29000f596f24"
+							class="bulleted-list">
+							<li style="list-style-type:circle">Redhat Package Manager<ul
+									id="857e33d5-d078-41f5-9df9-182755a2a5f8" class="bulleted-list">
+									<li style="list-style-type:square">Commands (rpm -ivh -Uvh, rpm -e 파일명으로 설치 및 제거)
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<ul id="e56663ba-e9ea-4ce6-a72d-45d54b45155f" class="bulleted-list">
+							<li style="list-style-type:circle">Yellodog Update Modified <ul
+									id="d2919c0f-1a2c-4b29-85f6-5fed4834fa2f" class="bulleted-list">
+									<li style="list-style-type:square">Commands ( yum install, update 패키지명으로 설치)</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="b5df02ca-20b5-416e-9489-42dfbd4d0061" class="bulleted-list">
+					<li style="list-style-type:disc">Network<ul id="f6e37ec1-e95b-4b0f-8866-00cdf6afac30"
+							class="bulleted-list">
+							<li style="list-style-type:circle">nmcli 명령어<ul id="f831a7db-e578-42d8-b424-5a0b63c1320a"
+									class="bulleted-list">
+									<li style="list-style-type:square">nmcli con show, down, up</li>
+								</ul>
+								<ul id="9d6a70a7-3c8a-4b63-8e7e-84d3beed8b36" class="bulleted-list">
+									<li style="list-style-type:square">정적 네트워크 세팅<ul
+											id="1c86d66c-ae7a-4bd4-a667-724e8a855d81" class="bulleted-list">
+											<li style="list-style-type:disc">nmcli con add type ethernet con-name
+												test-net ifname enp0s3 ip 10.0.2.16/24 gw4 10.0.2.1</li>
+										</ul>
+										<ul id="7b6b9a00-40e0-447e-8dce-4865ed4675e7" class="bulleted-list">
+											<li style="list-style-type:disc">nmcli con up test-net</li>
+										</ul>
+									</li>
+								</ul>
+								<ul id="1c240aa3-dafd-4ed7-8607-2f56a4a60364" class="bulleted-list">
+									<li style="list-style-type:square">동적 네트워크 세팅<ul
+											id="e96194b7-5295-4bd2-86ef-6c5746e0060d" class="bulleted-list">
+											<li style="list-style-type:disc">nmcli con mod test-net ipv4.method auto
+											</li>
+										</ul>
+										<ul id="51adc25f-4ebe-43a0-91dd-511b91864b5f" class="bulleted-list">
+											<li style="list-style-type:disc">nmcli con reload</li>
+										</ul>
+										<ul id="a0b52fbc-5898-4d04-976a-7effe7edaa8f" class="bulleted-list">
+											<li style="list-style-type:disc">nmcli con up test-net</li>
+										</ul>
+									</li>
+								</ul>
+								<ul id="cdc43391-855e-447f-8058-c01a6fb8d41e" class="bulleted-list">
+									<li style="list-style-type:square">DHCP<ul id="4f714d02-0e7b-4b9e-b320-a5614a68b003"
+											class="bulleted-list">
+											<li style="list-style-type:disc">nmcli con add con-name dhcp type ethernet
+												ifname enp0s3</li>
+										</ul>
+										<ul id="499ca4e1-7895-4f31-8342-ec7abd9a4ec2" class="bulleted-list">
+											<li style="list-style-type:disc">nmcli con reload</li>
+										</ul>
+										<ul id="539b6144-62bf-4529-8052-314425ba50ba" class="bulleted-list">
+											<li style="list-style-type:disc">nmcli up dhcp</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="bd0f96dd-ae0e-41b5-89db-192c18574029" class="bulleted-list">
+					<li style="list-style-type:disc">Firewall<ul id="7f48ee88-7612-4e06-8b6e-639aae18651a"
+							class="bulleted-list">
+							<li style="list-style-type:circle">핵심 명령어 firewall-cmd -pernamenet -add</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="af9f2692-6a56-4752-9583-e1c7700688c2" class="bulleted-list">
+					<li style="list-style-type:disc">Storage<ul id="a13e95b1-9ab6-4cbf-8302-fee18516170c"
+							class="bulleted-list">
+							<li style="list-style-type:circle">DAS (Direct-Attached Storage)<ul
+									id="866d848b-3b33-4281-92d6-83cbee5a9140" class="bulleted-list">
+									<li style="list-style-type:square">로컬에서 데이터 공유, 설치가 쉬움, 작은 조직에 적합, 하드 드라이브 저장소,
+										실용적이나 공간이 제한적 </li>
+								</ul>
+							</li>
+						</ul>
+						<ul id="a85892b4-7c9a-469a-8570-ff520c8a9738" class="bulleted-list">
+							<li style="list-style-type:circle">NAS (Network-Attached Storage)<ul
+									id="ebab29db-4169-495a-8dec-5e38f8b78466" class="bulleted-list">
+									<li style="list-style-type:square">로컬에서 데이터 공유, 다수의 파일 서버를 결합, 공간 절약 하나 확장성과 속도에 제한이
+										있음 (LAN 트래픽 상승시)</li>
+								</ul>
+							</li>
+						</ul>
+						<ul id="6e81dae3-a164-4763-9e32-472197b216cf" class="bulleted-list">
+							<li style="list-style-type:circle">SAN (Storage Area Networks)<ul
+									id="e16001e2-7731-47ec-b7dd-373c347573f7" class="bulleted-list">
+									<li style="list-style-type:square">로컬 밖에서 파일 공유 가능</li>
+								</ul>
+								<ul id="7840f747-238f-491c-a4c9-c09fecbe4693" class="bulleted-list">
+									<li style="list-style-type:square">IP SAN : 블록 단위 데이터를 전송하기 위해 iSCSI 프로토콜을 이용
+										(TCP/IP) 적은 비용, 단순함 ,<ul id="6010f812-4003-4bb0-8ae4-de4933249052"
+											class="bulleted-list">
+											<li style="list-style-type:disc">iSCSI (Internet Small Computer Systems
+												Interface)<ul id="f87b85c9-18bd-4290-81ca-a268dc225ef7"
+													class="bulleted-list">
+													<li style="list-style-type:circle">The protocol allows clients
+														(called initiators) to send SCSI commands (CDBs) to storage
+														devices (targets) on remote server.</li>
+												</ul>
+												<ul id="b2e9b744-13b4-420e-88c2-7c554241494f" class="bulleted-list">
+													<li style="list-style-type:circle">iSCSI Qualified Name (IQN)<ul
+															id="3499b112-c53f-4201-a436-17ee23e4fc0b"
+															class="bulleted-list">
+															<li style="list-style-type:square">iSCSI uses TCP for the
+																protocols itself, with higher-level names used to
+																address the objects within the protocol IQN<ul
+																	id="31e6715a-032e-4ec4-9f13-304e4818a894"
+																	class="bulleted-list">
+																	<li style="list-style-type:disc">iqn.Date.reversed
+																		Domain:sub Domain</li>
+																</ul>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<h1 id="b88dfce9-453d-475c-8594-1b2b1302e87c" class="">리눅스에 서버 설치 예시</h1>
+				<hr id="2574f1f3-4175-4796-ae7a-4c09127985e9" />
+				<ul id="0521dfaa-7e0f-440a-95d2-006102c6b67b" class="bulleted-list">
+					<li style="list-style-type:disc">DNS<ul id="dea45aff-67a5-42c3-bc40-54cf729b3dbd"
+							class="bulleted-list">
+							<li style="list-style-type:circle">사용자가 도메인을 입력하면, DNS가 IP 주소를 회신하여 접속이 가능해짐<ul
+									id="3979b83e-ffa6-42c4-979c-bf2118284496" class="bulleted-list">
+									<li style="list-style-type:square">Caching-only DNS Server<ul
+											id="27e7593f-55b3-49ba-84d1-e1bf1cd2aae7" class="bulleted-list">
+											<li style="list-style-type:disc">yum -y install bind bind-chroot</li>
+										</ul>
+										<ul id="0f71750c-bc1f-4527-92c9-c9f2a87167b7" class="bulleted-list">
+											<li style="list-style-type:disc">vi /etc/named.conf<ul
+													id="4c14c03b-8aff-4428-a11b-2ae6a58673f3" class="bulleted-list">
+													<li style="list-style-type:circle">listen-on port 53 any,
+														listen-on-v6 port 53 none, allow-query any</li>
+												</ul>
+											</li>
+										</ul>
+										<ul id="bdbe36b9-ae8f-4e9a-986c-69d1f43831ed" class="bulleted-list">
+											<li style="list-style-type:disc">systemctl start named, systemctl enable
+												named</li>
+										</ul>
+										<ul id="dbeabf10-b65c-4bf7-ab2c-a19ac99cde86" class="bulleted-list">
+											<li style="list-style-type:disc">firewall-cmd –permanent –add-service=dns
+											</li>
+										</ul>
+										<ul id="d3899e64-6e28-4e87-8390-a2452e3db646" class="bulleted-list">
+											<li style="list-style-type:disc">firewall-cmd –reload</li>
+										</ul>
+										<ul id="42b31e7d-5462-4043-9ec6-41f248cc3a0b" class="bulleted-list">
+											<li style="list-style-type:disc">firewall-cmd –permanent –add-port=53/tcp,
+												firewall-cmd –permanent –add-port=53/udp, firewall-cmd –reload</li>
+										</ul>
+										<p id="6b952747-8973-46ac-a884-5ff700b1dd1d" class="">
+										</p>
+									</li>
+								</ul>
+								<ul id="52584f45-fff1-433e-9c61-c029fb52a8e9" class="bulleted-list">
+									<li style="list-style-type:square">Name Server<ul
+											id="5600f3d0-55f3-454f-a5d8-e596e5baa83f" class="bulleted-list">
+											<li style="list-style-type:disc"><strong>yum install -y httpd</strong></li>
+										</ul>
+										<ul id="21028346-5eec-47ef-9261-54828df83e75" class="bulleted-list">
+											<li style="list-style-type:disc">systemctl start httpd</li>
+										</ul>
+										<ul id="cef98f63-c3da-489d-8610-8c80dd10a8a5" class="bulleted-list">
+											<li style="list-style-type:disc">systemctl enable httpd</li>
+										</ul>
+										<ul id="5daa6316-39a8-41f0-9a7b-67a702ba4abc" class="bulleted-list">
+											<li style="list-style-type:disc">firewall-cmd –permanent –add-service=http
+											</li>
+										</ul>
+										<ul id="4a0905e5-efa0-4126-a40c-e2c21ade0fc9" class="bulleted-list">
+											<li style="list-style-type:disc">firewall-cmd –reload</li>
+										</ul>
+										<ul id="1c144d9e-f3ec-4465-abe4-530939c9dca8" class="bulleted-list">
+											<li style="list-style-type:disc">vi
+												/etc/<strong>named.conf</strong> (Service Area
+												for <strong>BIND</strong>)<ul id="70323b80-7aa5-46bc-8fd6-53d751afef8d"
+													class="bulleted-list">
+													<li style="list-style-type:circle">zone “linux.com” IN {<ul
+															id="552f6113-9f34-4eb7-aaa4-80f8a674368e"
+															class="bulleted-list">
+															<li style="list-style-type:square">type master;</li>
+														</ul>
+														<ul id="e4456907-08a1-4733-989f-29eb704937bc"
+															class="bulleted-list">
+															<li style="list-style-type:square">file “linux.com.db”;</li>
+														</ul>
+														<ul id="99681698-c0ae-4f9c-a03a-d18f39cf1518"
+															class="bulleted-list">
+															<li style="list-style-type:square">allow-update {none;};
+																(non Second slave)};</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<ul id="6a2fb58e-537a-4612-bb75-435b754be803" class="bulleted-list">
+											<li style="list-style-type:disc">named-checkconf</li>
+										</ul>
+										<ul id="b0792ea6-73da-4563-a6f8-726052979195" class="bulleted-list">
+											<li style="list-style-type:disc">cd /var/named</li>
+										</ul>
+										<ul id="f2b1c0db-fcbc-4062-993a-29d629bb311a" class="bulleted-list">
+											<li style="list-style-type:disc">cp named.localhost linux.com.db</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="d55c59ac-f4a1-453e-ad43-27041080036a" class="bulleted-list">
+					<li style="list-style-type:disc">Network File System (NFS)<ul
+							id="b28c0689-8e1b-4b43-8276-50c4ad571345" class="bulleted-list">
+							<li style="list-style-type:circle">분산 파일 시스템으로, 사용자가 로컬 저장소 사용하듯 서버의 저장소를 사용<ul
+									id="d7a9963b-4e20-4679-b85f-9a0a6f27b737" class="bulleted-list">
+									<li style="list-style-type:square">Commands<ul
+											id="093e2de8-1a7d-4bbc-bfdf-6deb4d3d3144" class="bulleted-list">
+											<li style="list-style-type:disc">yum -y install nfs-utils</li>
+										</ul>
+										<ul id="295c148f-9908-415d-8fd9-9453c008ce69" class="bulleted-list">
+											<li style="list-style-type:disc">vi /etc/exports<ul
+													id="7c9c2a2d-8c5a-4a2b-ac18-97e635df06db" class="bulleted-list">
+													<li style="list-style-type:circle">
+														[Directorytoshare][Objective](Option)</li>
+												</ul>
+												<ul id="b69ccb70-6be2-4921-9702-a3edba4097f6" class="bulleted-list">
+													<li style="list-style-type:circle">/share IP(ro,syn,sec=sys)</li>
+												</ul>
+											</li>
+										</ul>
+										<ul id="64f22170-9eba-4778-8f7c-2f213e9d0ecb" class="bulleted-list">
+											<li style="list-style-type:disc">mkdir /share, chmod 777 /share, touch
+												/share/1234, ls /share</li>
+										</ul>
+										<ul id="4fa7fe22-28fc-43c4-b35e-c5b67a6fb05a" class="bulleted-list">
+											<li style="list-style-type:disc">systemctl restart nfs-server, systemctl
+												enable nfs-server</li>
+										</ul>
+										<ul id="03566061-6a67-4349-9866-a83c6860ec24" class="bulleted-list">
+											<li style="list-style-type:disc">exportfs -v (Confirming)</li>
+										</ul>
+										<ul id="787bbf6d-adf7-4827-ad6e-599676b08b41" class="bulleted-list">
+											<li style="list-style-type:disc">firewall-cmd –permanent
+												–add-service <strong>mountd</strong>, firewall-cmd –permanent
+												–add-service <strong>rpc-bind</strong> (Check ShareDirectory),
+												firewall-cmd –permanent –add-service nfs, firewall-cmd –reload</li>
+										</ul>
+										<ul id="b66dcf0f-516c-487c-b026-9b8a5412ea33" class="bulleted-list">
+											<li style="list-style-type:disc">Clients<ul
+													id="50dfd5c0-8059-48ea-b58f-fbaa920e23be" class="bulleted-list">
+													<li style="list-style-type:circle">rpm -qa nfs-utils (Display
+														installed package, showmount -e 10.0.2.15 (Confirming Directory
+														on 10.0.2.15/export)</li>
+												</ul>
+												<ul id="87b8cc7f-3148-41af-9f42-2c24493c1b75" class="bulleted-list">
+													<li style="list-style-type:circle">mkdir /nfs_share</li>
+												</ul>
+												<ul id="81059847-d8f4-43f4-8cb3-f4e3353c5ae3" class="bulleted-list">
+													<li style="list-style-type:circle">mount -t nfs 10.0.2.15:/share
+														/nfs_share</li>
+												</ul>
+												<ul id="5b2b034e-0e0f-4af3-b580-80b2907f3a9f" class="bulleted-list">
+													<li style="list-style-type:circle">cd /nfs_share/</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul id="d9878216-f9e0-43b4-b110-589702b5fe18" class="bulleted-list">
+					<li style="list-style-type:disc">DBMS<ul id="de00e230-c1e9-472a-91e9-b4e310d754fc"
+							class="bulleted-list">
+							<li style="list-style-type:circle">setenforce 0, vi /etc/sysconfig/selinux, SELINUX=disabled
+								(not to limit httpd for recording log), getenforce<ul
+									id="aae65437-59ce-48e6-b7d5-ac33820fed00" class="bulleted-list">
+									<li style="list-style-type:square">&lt;SELINUX&gt; : Security Module operating on
+										Kurnel<ul id="f04ae3fc-d87a-4abb-80f0-f289d8278857" class="bulleted-list">
+											<li style="list-style-type:disc">Enforcing (Limit) , Permissive (Enable but
+												record logs), Disabled</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<ul id="d5bd096f-cfb5-4aab-8e96-6c554433c1e5" class="bulleted-list">
+							<li style="list-style-type:circle">Database<ul id="8b8f9164-fb2c-4403-a9d6-2f9b536fd0e4"
+									class="bulleted-list">
+									<li style="list-style-type:square">Record : width, Noname</li>
+								</ul>
+								<ul id="ced8021e-84ec-4466-adb3-037fa31088fa" class="bulleted-list">
+									<li style="list-style-type:square">Column : height, Name and Type</li>
+								</ul>
+								<ul id="3da5d8b4-f180-49a5-bbdf-deae4e6e7ad0" class="bulleted-list">
+									<li style="list-style-type:square">Primary Key : having unique value to indentify
+										record, not empty</li>
+								</ul>
+								<ul id="61d0852d-0bcd-4096-8276-8bc5154acd1c" class="bulleted-list">
+									<li style="list-style-type:square">Foreign Key : Corresponding to other table’s PK
+									</li>
+								</ul>
+								<ul id="342960df-450f-4f8f-9716-3b8982e55618" class="bulleted-list">
+									<li style="list-style-type:square">SQL : Commands on DB</li>
+								</ul>
+								<ul id="8b5a88f6-d3f0-457f-9a1b-6728b2947bf9" class="bulleted-list">
+									<li style="list-style-type:square">Building Maria DB<ul
+											id="deb73b73-503c-4029-82ac-e0ca1c6f7ecc" class="bulleted-list">
+											<li style="list-style-type:disc">yum -y remove mariadb-libs, yum -y
+												localinstall Maria*</li>
+										</ul>
+										<ul id="f64b8f3d-38a9-4645-9698-df36e0cc7552" class="bulleted-list">
+											<li style="list-style-type:disc">systemctl restart mysql, chkconfig mysql on
+											</li>
+										</ul>
+										<ul id="41a66278-b0e8-407f-a8a8-2026b16be95f" class="bulleted-list">
+											<li style="list-style-type:disc">firewall-cmd –permanent –add-service=mysql,
+												firewall-cmd –reload</li>
+										</ul>
+										<ul id="e582deea-7b68-48a6-ae4b-35a640cae807" class="bulleted-list">
+											<li style="list-style-type:disc">yum -y install mariadb mariadb-server,
+												systemctl restart mariadb, systemctl enable mariadb</li>
+										</ul>
+										<ul id="0e74da50-f00b-462b-b909-63e4ad3b2a47" class="bulleted-list">
+											<li style="list-style-type:disc">mysqladmin -u root password ‘1234’</li>
+										</ul>
+									</li>
+								</ul>
+								<ul id="e9c6f743-f0b3-4c12-9190-e173d407436a" class="bulleted-list">
+									<li style="list-style-type:square">Using SQL<ul
+											id="7390386b-9d9d-42c2-b605-0fe96c338791" class="bulleted-list">
+											<li style="list-style-type:disc">SHOW DATABASES;</li>
+										</ul>
+										<ul id="ad18132b-0716-4c50-bdc9-346a4571a929" class="bulleted-list">
+											<li style="list-style-type:disc">CREATE DATABASE member_db;</li>
+										</ul>
+										<ul id="7466fa15-7fe9-46b5-a43f-13d1b51b3c9e" class="bulleted-list">
+											<li style="list-style-type:disc">DROP DATABASE member_db;</li>
+										</ul>
+										<ul id="2f27e6ca-89cb-4a27-b96c-ec85e663b243" class="bulleted-list">
+											<li style="list-style-type:disc">USE member_db;<ul
+													id="ac7a23d4-7b1a-4100-a493-166d52ca7911" class="bulleted-list">
+													<li style="list-style-type:circle">SHOW TABLES;</li>
+												</ul>
+												<ul id="5be09a37-7f62-47ac-a394-a394c0fc28de" class="bulleted-list">
+													<li style="list-style-type:circle">CREATE TABLE member (</li>
+												</ul>
+												<ul id="ddd0db8b-4564-4f0c-a77f-ad95fc8299f7" class="bulleted-list">
+													<li style="list-style-type:circle">-&gt; id VARCHAR(12) NOT NULL
+														PRIMARY KEY, : lenth of char up to 12, Not to be empty</li>
+												</ul>
+												<ul id="f81c5186-e088-432a-8b12-43c504bb2b0a" class="bulleted-list">
+													<li style="list-style-type:circle">&gt; name NVARCHAR(5), : N means
+														using Korean</li>
+												</ul>
+												<ul id="d035f378-4bf1-4838-b70d-3b145f64e427" class="bulleted-list">
+													<li style="list-style-type:circle">&gt; age INT;</li>
+												</ul>
+												<ul id="c5ecc76d-47f6-43ef-887f-5c8f09267864" class="bulleted-list">
+													<li style="list-style-type:circle">&gt; address NVARCHAR(5));</li>
+												</ul>
+											</li>
+										</ul>
+										<ul id="99070b92-501b-49ba-a0e9-35d2e7828f87" class="bulleted-list">
+											<li style="list-style-type:disc">ALTER TABLE [NAME] ADD [ColumnName] [TYPE]:
+												ALTER TABLE member_db ADD COLUMN meberidx INT ,</li>
+										</ul>
+										<ul id="20c0e8e9-24dd-4fd4-bf3a-3b5aae944144" class="bulleted-list">
+											<li style="list-style-type:disc">EXPLAIN [TABLENAME]; (show table structure
+												in details)DESCRIBE [TABLENAME];, DESC [TABLENAME];</li>
+										</ul>
+										<ul id="7229100c-1b3b-416f-9e99-a437ccc4af46" class="bulleted-list">
+											<li style="list-style-type:disc">INSERT INTO member VALUES (‘kim’, ‘chul’,
+												35, ‘seoul’);</li>
+										</ul>
+										<ul id="f95f8436-4678-4890-baee-208b7e12f1e1" class="bulleted-list">
+											<li style="list-style-type:disc">SELECT * FROM member;, SELECT * FROM member
+												WHERE id = ‘kim’;, SELECT age FROM member WHERE id = ‘kim’; SELECT
+												user,host FROM user WHERE user NOT LIKE “;</li>
+										</ul>
+										<ul id="13477e58-82e2-4ce5-b691-276a1658e6ce" class="bulleted-list">
+											<li style="list-style-type:disc">UPDATE member SET age=50 WHERE id=’joe’;
+											</li>
+										</ul>
+										<ul id="bc1b90f2-878c-4e12-96db-23729787e889" class="bulleted-list">
+											<li style="list-style-type:disc">DELETE from [TABLENAME] WHERE [Condition];
+												<ul id="9b48c9c2-bbd1-4f6d-84bf-fee48ee45aef" class="bulleted-list">
+													<li style="list-style-type:circle">DataDefineLanguage : CREATE,
+														ALTER, DROP</li>
+												</ul>
+												<ul id="5d48caf4-c259-44f2-850c-5caf27cbf52a" class="bulleted-list">
+													<li style="list-style-type:circle">DataManipulationLanguage :
+														SELECT, INSERT, UPDATE, DELETE</li>
+												</ul>
+												<ul id="f18fcdd9-07f6-4f5c-b8fd-d6e8fd1ca7bb" class="bulleted-list">
+													<li style="list-style-type:circle">DataControlLanguage : GRANT,
+														REVOKE</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<ul id="e60cb48d-e124-40a0-85d3-024e37092146" class="bulleted-list">
+									<li style="list-style-type:square">Clients access DB<ul
+											id="f42911d5-35fb-40d6-937b-ed04b510a3e6" class="bulleted-list">
+											<li style="list-style-type:disc">use mysql</li>
+										</ul>
+										<ul id="e5250df3-f622-4f7a-8765-2f91c1860f4f" class="bulleted-list">
+											<li style="list-style-type:disc">GRANT ALL PRIVILEGES ON *.* (All of DB and
+												Table) TO test@’10.0.2.%’ IDENTIFIED BY ‘1234’;</li>
+										</ul>
+										<ul id="ca7ade37-99f0-4fa4-865c-3bd179c13626" class="bulleted-list">
+											<li style="list-style-type:disc">mysql -h 10.0.2.15 -u test -p</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<p id="5aa3e4c2-8191-4102-8c70-8961fc2d91b1" class="">
+						</p>
+						<p id="bb2f944a-50d1-477b-8f01-45d5c28d1a93" class="">
+						</p>
+						<p id="c079a772-a6c3-44ab-b5dc-4c8f5461366c" class="">
+						</p>
+						<p id="fe736efd-e0a7-44d3-8b25-af4014342751" class="">
+						</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+	</div>
+</body>
+
+</html>

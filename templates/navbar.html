@@ -1,0 +1,29 @@
+<nav>
+    <div class="header">
+        <div class="container clearfix">
+            <div class="container-left clearfix">
+                <div class="logo">
+                    <a href="{{ url_for('intro.main') }}"><img
+                            src="{{ url_for('static', filename='image/goorm.png') }}"></a>
+                </div>
+                <div class="menu clearfix">
+                    <a href="/linux" class="menu-item">Linux</a>
+                    <a href="/cicd" class="menu-item">CI/CD</a>
+                    <a href="/docker" class="menu-item">Docker</a>
+                    <a href="/kubernetes" class="menu-item">Kubernetes</a>
+                    <a href="/aws" class="menu-item">Aws</a>
+                    <a href="/main/kk" class="menu-item">게시판</a>
+                </div>
+                <div class="container-right">
+                    {% if g.user %}
+                    {{ g.user.username }}님
+                    <button type="button" class="myButton" onclick="location.href='/auth/logout'">logout</button>
+                    {% else %}
+                    <button type="Button" class="myButton" onclick="location.href='/auth/login'">Login</button>
+                    <button type="Button" class="myButton" onclick="location.href='/auth/signup'">signup</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

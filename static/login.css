@@ -1,0 +1,85 @@
+body {
+    /* 브라우저마다 기본 설정으로 BODY 요소에 margin과 padding의 값이 설정되어 있습니다. */
+    /* 각각의 브라우저마다 BODY 요소가 다른 값을 가지고 있을 수 있으므로 우리가 일정하게 초기화해서 사용합니다. */
+    /* 0은 단위를 사용하지 않습니다. */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+.clearfix::after {
+    display: block;
+    clear: both;
+}
+
+.container .logo {
+    text-align: center;
+    /* 수평정렬: 왼쪽부터차례대로; - logo와 menu를 수평 정렬하기 위해 사용되었습니다. 이 속성의 정확한 의미는 수평 정렬이 아니지만 쉽게 이해하도록 의역했습니다. */
+}
+
+.container .logo img {
+    width: 120px;
+}
+
+.flex-text {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    color: black;
+    line-height: normal;
+    font-family: sans-serif;
+    white-space: normal;
+}
+
+.flex-id {
+    margin-top: 30px;
+    margin-bottom: var(--section-padding);
+    width: 300px;
+    height: auto;
+}
+
+.flex-password {
+    margin-top: 20px;
+    width: 300px;
+    height: auto;
+}
+
+.flex-login {
+    width: 300px;
+    height: auto;
+}
+
+.flex-register {
+    width: 300px;
+    height: auto;
+}
+
+.flex-loginbutton {
+    background-color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    width: 100%;
+    height: 40px;
+    justify-content: center;
+}
+
+.flex-registerbutton {
+    background-color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    width: 100%;
+    height: 40px;
+    justify-content: center;
+}

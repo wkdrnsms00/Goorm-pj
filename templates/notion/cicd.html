@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CI/CD</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container clearfix">
+            <div class="container-left clearfix">
+                <div class="logo">
+                    <a href="{{ url_for('intro.main') }}"><img
+                            src="{{ url_for('static', filename='image/goorm.png') }}"></a>
+                </div>
+                <div class="menu clearfix">
+                    <a href="/linux" class="menu-item">Linux</a>
+                    <a href="/cicd" class="menu-item">CI/CD</a>
+                    <a href="/docker" class="menu-item">Docker</a>
+                    <a href="/kubernetes" class="menu-item">Kubernetes</a>
+                    <a href="/aws" class="menu-item">Aws</a>
+                    <a href="/main/kk" class="menu-item">게시판</a>
+                </div>
+                <div class="container-right">
+                    {% if g.user %}
+                    {{ g.user.username }}님
+                    <button type="button" class="myButton" onclick="location.href='/auth/logout'">logout</button>
+                    {% else %}
+                    <button type="Button" class="myButton" onclick="location.href='/auth/login'">Login</button>
+                    <button type="Button" class="myButton" onclick="location.href='/auth/signup'">signup</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="linux">
+        <article id="c4b8a318-ad8d-49d0-8817-10f7640bd2c3" class="page sans">
+            <header>
+                <div class="page-header-icon undefined"><span class="icon">🤖</span></div><br>
+                <h1 class="page-title">CI/CD</h1>
+            </header>
+            <div class="page-body">
+                <p id="30548999-65fb-475b-bd1d-d30e81a3e668" class="">
+                </p>
+                <p id="ccf35507-9103-41ff-97bd-b98dd3e91ee3" class="block-color-gray">CI/CD 정리</p>
+                <hr id="9dc569c2-fef3-4d73-9441-7971f3e0d917" />
+                <p id="d4563ccb-0909-4cb5-b0f6-10a206de387f" class=""><mark class="highlight-red"><strong>CI(Continuous
+                            Integration) 란?</strong></mark></p>
+                <ul id="2e9d075e-fc05-440d-91eb-4dee11d449b4" class="bulleted-list">
+                    <li style="list-style-type:disc">빌드/테스트 자동화 과정</li>
+                </ul>
+                <ul id="66fe6050-181f-490a-9ed5-277bc2e67d8f" class="bulleted-list">
+                    <li style="list-style-type:disc">개발자를 위한 자동화 프로세스인 지속적인 통합(Continuous Integration)의미</li>
+                </ul>
+                <ul id="8468bc74-7982-41a5-bab1-bd5a640f7549" class="bulleted-list">
+                    <li style="list-style-type:disc">성공적으로 구현할 경우 애플리케이션에 대한 새로운 코드 변경 사항이 정기적으로 빌드 및 테스트</li>
+                </ul>
+                <ul id="29ac7fc7-b3e5-4e18-b210-874658aaa1b7" class="bulleted-list">
+                    <li style="list-style-type:disc">리포지토리에 통합되므로 여러 명의 개발자가 동시에 애플리케이션 개발과 관련된 코드 작업을 할 경우 서로 충돌할 수 있는
+                        문제를 해결</li>
+                </ul>
+                <p id="e6db3250-150a-48fe-8aa0-e943b84019ce" class=""><mark class="highlight-red"><strong>CI의
+                            장점</strong></mark></p>
+                <ul id="2ea02656-4726-4238-8a88-4d87c4fca256" class="bulleted-list">
+                    <li style="list-style-type:disc">코드 검증에 들어가는 시간이 감소</li>
+                </ul>
+                <ul id="73096f95-fd61-469f-b95b-7f5f590cbe96" class="bulleted-list">
+                    <li style="list-style-type:disc">개발 편의성 증가</li>
+                </ul>
+                <ul id="91e05f52-4ee3-49d0-bffc-509c3bd9433a" class="bulleted-list">
+                    <li style="list-style-type:disc">테스트 코드를 통과한 코드만이 레포지터리에 올라가기에 좋은 퀄리티의 코드 유지</li><br>
+                </ul>
+                <p id="7e6a794f-9e75-4453-b153-abe847db0690" class="">
+                </p>
+                <p id="fc7fafd5-92d6-4a47-9726-2e6184bbf578" class=""><mark class="highlight-red"><strong>CD(Continuous
+                            Deployment) 란?</strong></mark></p>
+                <ul id="d3d2ee11-4a37-4412-81a6-40aceb77eef1" class="bulleted-list">
+                    <li style="list-style-type:disc">배포 자동화 과정</li>
+                </ul>
+                <ul id="baa5593e-34dc-47bc-88e5-e6b26d24b3ce" class="bulleted-list">
+                    <li style="list-style-type:disc">지속적 서비스 제공(Continuous Delivery) or 지속적 배포(Continuous Deployment)
+                    </li>
+                </ul>
+                <ul id="c38016c1-2d93-4008-bd84-d50fbe770116" class="bulleted-list">
+                    <li style="list-style-type:disc">코드 변경이 파이프라인의 이전 단계를 모두 성공적으로 통과하면 수동 개입 없이 해당 변경 사항이 프로덕션에 자동으로 배포
+                    </li>
+                </ul>
+                <ul id="48ffc62e-b147-4ab3-a8a8-34ee6c2271d3" class="bulleted-list">
+                    <li style="list-style-type:disc">품질 저하 없이 최대한 빨리 사용자에게 새로운 기능을 제공</li>
+                </ul>
+                <p id="5b9274f1-9a82-4653-9953-535f7ac345ab" class=""><mark class="highlight-red"><strong>CD의
+                            장점</strong></mark></p>
+                <ul id="35daa1ea-dcb3-4dd7-ae21-485eefde9c66" class="bulleted-list">
+                    <li style="list-style-type:disc">개발자들은 배포를 신경쓰지 않아 개발에만 집중 가능</li>
+                </ul>
+                <ul id="e3a862b5-6a0d-4673-b810-57d5584493e0" class="bulleted-list">
+                    <li style="list-style-type:disc">개발자가 한 번의 클릭으로 작업없이 빌드, 테스트, 배포까지 자동화 가능</li><br>
+                </ul>
+                <p id="c2888e42-2bcd-413b-af61-9d2bee24573a" class="">
+                </p>
+                <h3 id="40314926-626e-417a-ab9e-e81ea9fa379d" class="">CI/CD workflow</h3>
+                <figure id="b293e202-3db7-4c15-b3e8-b3c7817a8f4a" class="image"><img style="width:1160px"
+                        src="{{ url_for('static', filename='image/Untitled.png') }}"></figure><br>
+                <p id="c52480e2-3fdb-46fe-8ea9-ec6711042750" class="">
+                </p>
+                <h1 id="8c4c7620-d70b-434b-bf78-d4ee9b77ef45" class="">CI/CD Tool</h1>
+                <hr id="3f5f1748-d57a-4555-adb5-0bca41c77a80" />
+                <h3 id="c54933c8-49ea-4be6-9cc7-2f1ae7a04897" class=""><mark
+                        class="highlight-yellow_background">Jenkins</mark></h3>
+                <ul id="de3f313f-bb9c-4083-b157-01b8681917cf" class="bulleted-list">
+                    <li style="list-style-type:disc">자바 기반 오픈소스 CI/CD 툴</li>
+                </ul>
+                <ul id="048f452c-e6a3-471c-bf30-bad729da3a5d" class="bulleted-list">
+                    <li style="list-style-type:disc">Windows, macOS 또는 openSUSE, Red Hat, Ubuntu와 같은 다양한 리눅스 OS에 사용 가능
+                    </li>
+                </ul>
+                <ul id="eaa3c0f7-c7b8-4f03-876a-e3dfe2dc5a01" class="bulleted-list">
+                    <li style="list-style-type:disc">설치 및 사용이 간단</li>
+                </ul>
+                <ul id="f4212d2d-5702-4318-894e-e825ee13a68e" class="bulleted-list">
+                    <li style="list-style-type:disc">발전하는 플러그인(플러그인은 젠킨스 내에서 여러 유용한 기능을 제공하고 생산성과 안정성을 높여주는 역할)<figure
+                            id="2e013bda-4ca3-4185-ad65-f825809df61c"><a href="https://www.jenkins.io/"
+                                class="bookmark source">
+                                <div class="bookmark-info">
+                                    <div class="bookmark-text">
+                                        <div class="bookmark-title">Jenkins</div>
+                                        <div class="bookmark-description">Build great things at any scale. The leading
+                                            open source automation server, Jenkins provides hundreds of plugins to
+                                            support building, deploying and automating any project. We stand with the
+                                            people of Ukraine. Please assist humanitarian efforts for the Ukrainian
+                                            people and those affected by the military invasion of Ukraine by supporting
+                                            international aid organizations, including the International Committee of
+                                            the Red Cross.</div>
+                                    </div>
+                                    <div class="bookmark-href"><img src="https://www.jenkins.io/favicon.ico"
+                                            class="icon bookmark-icon" />https://www.jenkins.io/</div>
+                                </div><img src="https://www.jenkins.io/images/logo-title-opengraph.png"
+                                    class="bookmark-image" />
+                            </a></figure><br>
+                    </li>
+                </ul>
+                <p id="0c50076a-1e61-44c5-84fa-75705a398dd0" class="">
+                </p>
+                <h3 id="2e297f01-2971-4677-a576-185bdede601a" class=""><mark
+                        class="highlight-yellow_background"><strong>Argo CD</strong></mark></h3>
+                <ul id="276bab23-fb00-4149-a0b7-d0654ad89b77" class="bulleted-list">
+                    <li style="list-style-type:disc">Argo CD는 GitOps 스타일의 배포를 지원하는 CD 도구</li>
+                </ul>
+                <ul id="b4457419-9647-4b3b-b782-9adef14ad4be" class="bulleted-list">
+                    <li style="list-style-type:disc">Git 저장소의 내용과 쿠버네티스 클러스터를 동기화해주는 역할을 하는 에이전트</li>
+                </ul>
+                <ul id="e52608a8-681c-4acc-ac5c-8a45546a6665" class="bulleted-list">
+                    <li style="list-style-type:disc">쿠버네티스 클러스터 내부에서 Pod 형태로 배포<figure
+                            id="b9c5a435-d78a-476e-b335-befe857967a3"><a href="https://argoproj.github.io/"
+                                class="bookmark source">
+                                <div class="bookmark-info">
+                                    <div class="bookmark-text">
+                                        <div class="bookmark-title">Home</div>
+                                        <div class="bookmark-description">2022 © Argo Project Authors. All rights
+                                            reserved. The Linux Foundation has registered trademarks and uses
+                                            trademarks. For a list of trademarks of The Linux Foundation, please see our
+                                            Trademark Usage page.</div>
+                                    </div>
+                                    <div class="bookmark-href"><img
+                                            src="https://argoproj.github.io/favicon-32x32.png?v=48b38c857977860245a12be5b6e591b1"
+                                            class="icon bookmark-icon" />https://argoproj.github.io/</div>
+                                </div><img
+                                    src="https://argoproj.github.io/static/home-15d3ed7f06b22973bcd7922e497ef311.png"
+                                    class="bookmark-image" />
+                            </a></figure><br>
+                    </li>
+                </ul>
+                <p id="0c7c0ea9-eda0-46a5-80f6-61040ca383d8" class="">
+                </p>
+                <h3 id="bbb69d56-baff-478c-9c90-eab3bc60b86d" class=""><mark
+                        class="highlight-yellow_background">CircleCI</mark></h3>
+                <ul id="6c80dde2-420f-412f-b995-8f9ef38167e9" class="bulleted-list">
+                    <li style="list-style-type:disc">Linux, macOS, Android, and Windows 운영체제에서 사용 가능</li>
+                </ul>
+                <ul id="067821fb-0efe-4891-bca5-440b418a8584" class="bulleted-list">
+                    <li style="list-style-type:disc">일정 한도 내에서 무료로 사용 가능<ul id="f3226fdf-7254-4512-8d0e-c4320032d034"
+                            class="bulleted-list">
+                            <li style="list-style-type:circle">한주에 2500 크레딧 부여하고 한번에 하나의 job 수행</li>
+                        </ul>
+                        <ul id="50f243bd-3e50-43fc-898e-bc65d1751a92" class="bulleted-list">
+                            <li style="list-style-type:circle">무료 제공되는 크레딧으로 한달에 1000분 정도의 빌드 시간 사용 가능</li>
+                        </ul>
+                        <ul id="327f7b46-80d4-473e-b817-b5aeb6a6baee" class="bulleted-list">
+                            <li style="list-style-type:circle">유료로 사용할 경우 한달에 15달러</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul id="0f2f2982-3d35-4036-9813-b9c443198035" class="bulleted-list">
+                    <li style="list-style-type:disc">Git에 Push를 하면 자동으로 테스트를 진행하여 검사 결과를 알려 주어 문제점에 대해 바로 알림을 보내줌. 이를 통해
+                        협업시 발생할 수 있는 파일충돌이나 에러를 잡을 수 있음. 그리고 문제가 없다면 서버에 배포까지 자동으로 이루어짐<figure
+                            id="96caea37-8661-4f09-ac9b-1f75652c172f"><a href="https://circleci.com/"
+                                class="bookmark source">
+                                <div class="bookmark-info">
+                                    <div class="bookmark-text">
+                                        <div class="bookmark-title">Continuous Integration and Delivery</div>
+                                        <div class="bookmark-description">Get the best continuous integration and
+                                            delivery for any platform, in our cloud or on your own infrastructure.</div>
+                                    </div>
+                                    <div class="bookmark-href"><img
+                                            src="https://d3r49iyjzglexf.cloudfront.net/favicon-7821a60418a7ee3a7570d938fb95e809903dbfca7514b9245f1beef5d00da2d8.ico"
+                                            class="icon bookmark-icon" />https://circleci.com/</div>
+                                </div><img
+                                    src="https://d3r49iyjzglexf.cloudfront.net/circleci-logo-horizontal-twitter-48d4d4cde22c26476d5c81b91630c2da5357c0cd21ff3183a0ae997d3e999bb2.png"
+                                    class="bookmark-image" />
+                            </a></figure><br>
+                    </li>
+                </ul>
+                <p id="957bd17d-58bf-48c7-ba08-3a38e9ca104c" class="">
+                </p>
+                <h3 id="2cbc2efe-1209-46a4-ade5-997fb495bafd" class=""><mark
+                        class="highlight-yellow_background"><strong><strong>Bamboo</strong></strong></mark></h3>
+                <ul id="0606d458-7040-4541-acc2-d8ab386466a3" class="bulleted-list">
+                    <li style="list-style-type:disc">Atlassian에서 개발한 CI 도구로 JIRA 의 대쉬보드나 confluence의 Page에 bamboo build
+                        chart 를 붙일수도 있고 JIRA 의 특정 이슈와 관련된 build 내역을 조회하는 등 atlassian 제품을 기존에 사용하고 있다면 각 제품군을 통합해서 더욱
+                        유기적으로 사용할 수 있음</li>
+                </ul>
+                <ul id="fade0449-63ab-483e-a9fc-4585fb59894c" class="bulleted-list">
+                    <li style="list-style-type:disc">유료 서비스</li>
+                </ul>
+                <ul id="63dbfb7d-8e38-4aad-8341-356061ba1b0c" class="bulleted-list">
+                    <li style="list-style-type:disc">Windows, Mac OS X, Linux와 같은 플랫폼에서 사용 가능<figure
+                            id="b545d3bf-75c5-4222-8091-6ac2ed0948bd"><a
+                                href="https://www.atlassian.com/ko/software/bamboo" class="bookmark source">
+                                <div class="bookmark-info">
+                                    <div class="bookmark-text">
+                                        <div class="bookmark-title">Bamboo 지속적 통합 및 배포 빌드 서버 | Atlassian</div>
+                                        <div class="bookmark-description">Git 이외에도 Bamboo는 Bitbucket 및 Fisheye의 리포지토리와
+                                            SVN, Mercurial, Perforce, CVS로 연결됩니다. Bamboo는 포함하고 있는 코드 변경 사항으로 빌드를 연결합니다.
+                                            커밋 메시지, 작성자, 참조 번호 및 날짜가 각 빌드 결과에 표시되며 한 번의 클릭으로 리포지토리 뷰어로 이동하여 Diff, 이력 및
+                                            찾아보기 관련 코드를 볼 수 있습니다.</div>
+                                    </div>
+                                    <div class="bookmark-href"><img
+                                            src="https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png"
+                                            class="icon bookmark-icon" />https://www.atlassian.com/ko/software/bamboo
+                                    </div>
+                                </div>
+                            </a></figure>
+                        <p id="9c51c72d-d696-42c5-a051-ed02160fa1aa" class="">
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</body>
+
+</html>

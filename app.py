@@ -1,46 +1,46 @@
-from flask import Flask, render_template, request
-import sqlite3 as sql
+from flask import Flask
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import MetaData
+from flaskext.markdown import Markdown
 
-app = Flask(__name__)
+import config as config
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+naming_convention = {
+    "ix": 'ix_%(column_0_label)s',
+    "uq": "uq_%(table_name)s_%(column_0_name)s",
+    "ck": "ck_%(table_name)s_%(column_0_name)s",
+    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+    "pk": "pk_%(table_name)s"
+}
+db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
+migrate = Migrate()
 
-@app.route('/user_form')
-def new_user():
-    return render_template('user.html')
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(config)
 
-@app.route('/list')
-def list():
-    con = sql.connect("database.db") #database.db파일에 접근.
-    con.row_factory = sql.Row
+    # ORM
+    db.init_app(app)
+    if app.config['SQLALCHEMY_DATABASE_URI'].startswith("sqlite"):
+        migrate.init_app(app, db, render_as_batch=True)
+    else:
+        migrate.init_app(app, db)
+    import models as models
 
-    cur = con.cursor()
-    cur.execute("select * from users")
+    # 블루프린트
+    from views import main_views, question_views, answer_views, intro_views, auth_views
+    app.register_blueprint(main_views.bp)
+    app.register_blueprint(question_views.bp)
+    app.register_blueprint(answer_views.bp)
+    app.register_blueprint(intro_views.bp)
+    app.register_blueprint(auth_views.bp)
 
-    rows = cur.fetchall()
-    return render_template("list.html",rows = rows)
-
-
-@app.route('/user_info',methods = ['POST', 'GET'])
-def user_info():
-    if request.method == 'POST':
-        try:
-            user_email = request.form['user_email']
-            user_name = request.form['user_name']
-
-            with sql.connect("database.db") as con:
-                cur = con.cursor()
-
-                cur.execute("INSERT INTO users (email, name) VALUES (?,?)",(user_email,user_name) )
-
-                msg = "Success"
-
-        except:
-            con.rollback()
-            msg = "error"
-
-        finally:
-            return render_template("result.html",msg = msg)
-            con.close()
+    # 필터
+    from filter import format_datetime
+    app.jinja_env.filters['datetime'] = format_datetime
+    
+    # markdown
+    Markdown(app, extensions=['nl2br', 'fenced_code'])
+    
+    return app

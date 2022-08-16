@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aws</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container clearfix">
+            <div class="container-left clearfix">
+                <div class="logo">
+                    <a href="{{ url_for('intro.main') }}"><img
+                            src="{{ url_for('static', filename='image/goorm.png') }}"></a>
+                </div>
+                <div class="menu clearfix">
+                    <a href="/linux" class="menu-item">Linux</a>
+                    <a href="/cicd" class="menu-item">CI/CD</a>
+                    <a href="/docker" class="menu-item">Docker</a>
+                    <a href="/kubernetes" class="menu-item">Kubernetes</a>
+                    <a href="/aws" class="menu-item">Aws</a>
+                    <a href="/main/kk" class="menu-item">게시판</a>
+                </div>
+                <div class="container-right">
+                    {% if g.user %}
+                    {{ g.user.username }}님
+                    <button type="button" class="myButton" onclick="location.href='/auth/logout'">logout</button>
+                    {% else %}
+                    <button type="Button" class="myButton" onclick="location.href='/auth/login'">Login</button>
+                    <button type="Button" class="myButton" onclick="location.href='/auth/signup'">signup</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="linux">
+        <article id="32f3cd9d-1a7f-449f-a302-15905bf5122f" class="page sans">
+            <header>
+                <div class="page-header-icon undefined"><span class="icon">🤖</span></div><br>
+                <h1 class="page-title">AWS</h1>
+            </header>
+            <div class="page-body">
+                <hr id="e5fda08c-9aad-4251-bf92-cec90be99b6d" />
+                <h1 id="74118736-07ed-4ee5-b136-86f4d780ce87" class="">AWS(Amazone Web Service)</h1>
+                <p id="097a1be0-310a-4b90-a9a0-1d0557f5370c" class="">온라인 쇼핑몰 AMAZONE에서 개발한 클라우드 컴퓨팅 플랫폿으로 컴퓨팅 서비스, 네트워킹
+                    서비스, 스토리지 서비스,데이터베이스 서비스 등 다양한 서비스를 제공하고 있다.</p><br>
+                <h2 id="6f5eac79-facb-45fc-be64-944aec2fdfd3" class="">리전(Region)</h2>
+                <p id="9ef86608-0ac4-43bf-b80e-dcf25550d79f" class="">물리적으로 거리가 다른 지역과 같은 서버를 사용하게 되면 속도 문제가 발생할 수 있다.
+                    그리고 재해와 같은 문제 발생시 대체 서버가 없으면 서버가 정지된다. 아마존은 이러한 상황이 발생하지 않게 하기 위해 전세계 주요 국가에 여러 서버를 구축하는데
+                    이를 <strong>리전</strong>이라 한다. 사용자는 해당 위치에서 가장 가까운 리전을 클라우드 서비스를 사용하면 된다.</p>
+                <p id="515c3196-b228-4fe0-adf7-c3043bb7ef92" class=""><strong>주의할점은 리전마다 제공되는 서비스가 다르므로 내가 사용할 서비스가 선택한
+                        리전에서 제공하는지 확인해야 된다.</strong></p><br>
+                <h2 id="3069ba1a-de13-48e6-929d-4bb1c3d31b24" class="">가용영역(Avilability Zone)</h2>
+                <p id="0a979678-7153-4828-b0cf-037142f4166b" class=""><strong>가용영역</strong>은 데이터 센터라고 생각하면 된다. 하나의 리전은
+                    여러 가용영역을 보유하고 있으며 가용영역은 물리적으로 떨어져있다. 재해, 정전과 같은 상황이 발생하여 하나의 가용영역을 사용할 수 없을 때 다른 가용영역을 사용해서 서비스를
+                    정상적으로 진행할 수 있다.</p>
+                <figure id="874ce5d1-f492-441b-ae01-1621ed9e825a" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/c7d2c867-3a2a-4328-8531-ee684116d0a4/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/c7d2c867-3a2a-4328-8531-ee684116d0a4/image.png" /></a>
+                </figure><br>
+                <h1 id="4698448f-2a51-4c77-a5d6-25418d69e3b0" class="">EC2</h1>
+                <h2 id="7fea9801-1a2b-463e-839f-088ee1ef3051" class="">특징</h2>
+                <ol type="1" id="0b0a4966-607c-43cf-923d-379f2b7c14fa" class="numbered-list" start="1">
+                    <li>모든 리전에서 사용 가능한 범용적인 서비스</li>
+                </ol>
+                <ol type="1" id="8008f02a-fb1d-4599-8867-bd97cf79ef69" class="numbered-list" start="2">
+                    <li>인스턴스 생성을 위한 리소스 제공</li>
+                </ol>
+                <ol type="1" id="1f23de3c-ec75-42fb-b460-3a9a836a65dd" class="numbered-list" start="3">
+                    <li>비용정책, 스펙에 따른 분류</li><br>
+                </ol>
+                <h2 id="a42df549-a8e7-44c8-b88b-8a1d6b0863a1" class="">인스턴스 생성</h2>
+                <p id="a2951546-66a8-4801-ac94-36d22105d282" class="">생성할 인스턴스의 이름, 리소스 선택</p>
+                <figure id="d7a4c6f1-3027-4846-8b76-7a2ebdd48f89" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/9268c75e-b26e-4f86-8c70-acef381e0fd8/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/9268c75e-b26e-4f86-8c70-acef381e0fd8/image.png" /></a>
+                </figure><br>
+                <h2 id="8eeae48a-ddf8-4f45-955c-56fb94e7b571" class="">키 페어 생성</h2>
+                <p id="6372f0f3-a2ae-413c-8e86-8266069068fd" class="">ssh 접속을 위한 키 페어 생성</p>
+                <figure id="0b39f862-7eee-471a-887e-0141319f7774" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/3f17b2df-5330-4318-8a64-4eb6adfeffb5/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/3f17b2df-5330-4318-8a64-4eb6adfeffb5/image.png" /></a>
+                </figure><br>
+                <h2 id="48556abd-eefb-43da-91ee-4088ede5648b" class="">네트워크 설정</h2>
+                <p id="37d6f4d4-7913-4b1f-8f31-3d3e06f16d16" class="">ssh 접속을 위해 SSH 트래픽 허용을 체크해준다.</p>
+                <figure id="61ea8826-63d7-46cc-bd16-a28b718fff5e" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/ac86f607-b81f-46d5-a672-2ee4b8e2a8bc/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/ac86f607-b81f-46d5-a672-2ee4b8e2a8bc/image.png" /></a>
+                </figure><br>
+                <h2 id="eeab398c-60b5-4167-9092-8a73500eff92" class="">접속</h2>
+                <p id="9cf31d6c-2523-4e4d-ab69-0f4d78effd49" class="">생성한 키, AWS 인스턴스 화면의 퍼블릭IPv4 주소를 이용하여 접속한다.ec2 기본
+                    계정은 ec2-user 이다.</p>
+                <figure id="a0144d27-42a3-4813-88f7-d892ce4f3296" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/a88f693f-d23d-442c-ad22-31494f3ee546/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/a88f693f-d23d-442c-ad22-31494f3ee546/image.png" /></a>
+                </figure><br>
+                <p id="dfc21017-e190-4f4d-8d68-bb0e872bf0be" class="">
+                </p>
+                <h1 id="4e005815-3fc1-4d22-8136-d860df9d1f86" class="">S3</h1>
+                <hr id="b795bd2a-db97-468e-8f06-8dd161bcf6ca" />
+                <h1 id="375dc748-2441-4831-8553-6e52afaec5ad" class="">스토리지</h1>
+                <p id="ffc03f96-ff61-493e-94e7-7b1508b3cf0b" class="">데이터를 저장하는 저장소의 역할을 수행하는 요소여러개의 스토리지를 하드웨어 고장,
+                    하드디스크 손상을 대비하기 위한 데이터 백업용으로 사용할 수 있음.(스냅샷 기능도 사용 가능)</p>
+                <h2 id="589add3b-2033-45e9-8945-d74a36ffc309" class="">DAS(Direct Attached Storage)</h2>
+                <p id="1b365e65-22b1-45de-9e3f-bae7c4c7a06c" class="">직접 서버에 연결하는 저장소</p>
+                <h2 id="5ee6778d-fb67-4142-8873-6f3b7152b20c" class="">NAS(Network Attached Storage)</h2>
+                <p id="99c8ca93-d1bb-4dfb-8124-a18406caa88b" class="">스토리지를 네트워크로 연결하는 파일 기반 저장소</p>
+                <h2 id="bcdd966a-7f9a-4a21-81ad-8dc2151664b9" class="">SAN(Storage Area Network)</h2>
+                <p id="1befeb2d-2ec7-4868-8cb3-d9e7cfa5e7bd" class="">별도의 스토리지용 네트워크를 구성(Fibre Channel)하는 블록 기반 저장소</p>
+                <h1 id="75194968-03da-4115-be4d-3a48e4e1d0bf" class="">S3(Simple Storage Service)</h1>
+                <p id="2d8c3f15-db29-46da-a96e-139ba9a6d168" class="">확장성이 뛰어나 거의 무한대로 저장 가능한 스토리지로 사용하는 만큼 비용을 지불해야
+                    된다.파일 형태로 스토리지 공간에 저장하며 저장 공간을 버킷(Bucket), 저장하는 각각의 파일을 오브젝트(객체)라 한다.</p>
+                <p id="43688398-d23a-497c-9172-39bb1e6f0b3e" class="">버킷 설정에 따라 오브젝트를 공개할 수 있고, 비공개 할 수 있다.</p>
+                <h2 id="28a1aadd-b65a-4652-af63-7be056c02833" class="">버킷 생성 및 설정</h2>
+                <p id="1d2cb45e-230a-4b91-a9a0-df6b27d3eb2a" class="">Public</p>
+                <p id="a41ed089-9ad1-4e29-9740-2e61ae4266ce" class="">모든 사람이 오브젝트를 접근할 수 있게 설정하기 위해 ACL활성화 선택, 모든 퍼블릭
+                    엑세스 차단 체크 해제 진행</p>
+                <figure id="894185d8-b3af-4e15-9e18-42a416a3577d" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/1654925e-7bb3-416a-bfb5-d77412df0548/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/1654925e-7bb3-416a-bfb5-d77412df0548/image.png" /></a>
+                </figure>
+                <h2 id="f5337857-d2b1-4c00-8335-19ca55ccc0b3" class="">파일 업로드 및 설정</h2>
+                <p id="86e63c66-f383-437d-89b5-32701f936737" class="">원하는 파일 업로드 후 아래 권한 부분에서 퍼블릭 읽기 엑세스 권한 부여 선택</p>
+                <figure id="c2495457-4a19-40b5-a8e1-7f11415a408f" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/5557bc31-e6ac-45f5-a780-0a40182a4b20/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/5557bc31-e6ac-45f5-a780-0a40182a4b20/image.png" /></a>
+                </figure>
+                <figure id="d6502459-9657-4875-aa8c-faff8ba295da" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/295210eb-866f-4e8b-b5ab-f392df063ea4/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/295210eb-866f-4e8b-b5ab-f392df063ea4/image.png" /></a>
+                </figure>
+                <h2 id="798b99af-d968-4919-97ce-0e09f2fbc313" class="">확인</h2>
+                <p id="14100be5-a44f-4461-a5b1-1b1544843a0a" class="">업로드한 파일 선택 후 객체 URL 확인</p>
+                <figure id="87b347fc-066c-4901-9ed6-87dec88f7920" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/5032a66b-cf87-4c31-9a83-085d0ac40ee2/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/5032a66b-cf87-4c31-9a83-085d0ac40ee2/image.png" /></a>
+                </figure>
+                <p id="ea6830f1-be38-42f4-bad1-79795630126c" class="">private의 경우 ACL 비활성화 선택, 모든 퍼블릭 엑세스 차단 체크로 생성하면
+                    된다. 단, private 버킷에서 public으로 변경은 안된다.파일의 입출력이 적고 단순 데이터 백업용도로 사용할 때는 Glascier를 사용하는게 S3를 사용하는 것 보다
+                    저렴하다.</p>
+                <p id="742c16fb-be90-4e57-8bf5-633dcff9b097" class="">
+                </p>
+                <h1 id="a0b37181-d410-44c9-abf3-ada0548d734c" class="">EC2, S3 사용해서 데이터 백업하기</h1>
+                <hr id="35a98567-783f-47a7-b65e-a68c65ab9e0e" />
+                <h1 id="6e208b8b-8d9f-456a-88d7-5b6b58d9cb81" class=""> 순서</h1>
+                <h2 id="251a0376-b31e-488b-8234-706e4eb3c41f" class="">1. 버킷, 인스턴스 생성</h2>
+                <p id="25fbc108-fbce-4140-9c60-0942cf06e7b8" class="">S3, 인스턴스를 생성해준다.</p>
+                <h2 id="0876c416-9642-4b8b-877e-09d73c9f2805" class="">2. IAM 사용자 생성 및 정책 설정</h2>
+                <p id="e9a53aba-3e18-42ab-9ee5-ef78f6746cb2" class="">현재 IAM 계정 사용중이므로 설정하지 않음.</p>
+                <h2 id="bd776b4d-7d4a-46e9-bc5d-7809fe9dc52a" class="">3. .csv 파일 다운로드 &amp; 등록</h2>
+                <p id="35447e68-2c43-4fe7-a68f-bfe595871e99" class="">IAM 대시보드의 엑세스 관리 사용자 선택 후 액세스 키 생성 진행</p>
+                <figure id="2b772626-9d80-4e03-9326-2c9167094584" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/bc0e9ab3-eeab-4f33-96c6-4199c39b5bfc/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/bc0e9ab3-eeab-4f33-96c6-4199c39b5bfc/image.png" /></a>
+                </figure>
+                <h2 id="f02b76e6-f341-451e-91bc-0186cfc90e95" class="">4. 인스턴스 접속 후 AWS CLI 설치</h2>
+                <p id="ec74a542-860e-48de-bcb6-83bc010fac71" class=""><a
+                        href="https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html">https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html</a>링크에
+                    접속해 curl 명령어로 압축파일 다운로드</p>
+                <blockquote id="dacad7f5-298b-48d9-8a2a-90817a91bcee" class="">curl
+                    &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o
+                    &quot;awscliv2.zip&quot;unzip awscliv2.zipsudo ./aws/install</blockquote>
+                <figure id="502880bf-04d5-4e60-99d5-cfde52dfd72b" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/01d7993f-100a-4741-9c54-ff7c2067c7bc/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/01d7993f-100a-4741-9c54-ff7c2067c7bc/image.png" /></a>
+                </figure>
+                <p id="f4d31778-97da-4183-bc23-32f9615716a2" class="">설치 완료 확인</p>
+                <blockquote id="524a9917-5e90-4bf7-b96e-58fc68522962" class="">aws --version</blockquote>
+                <figure id="791e0840-c69c-4787-bf2d-4cfc6624e583" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/54ece5d4-a57f-433c-9b29-307103d0d125/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/54ece5d4-a57f-433c-9b29-307103d0d125/image.png" /></a>
+                </figure>
+                <p id="1e8c7969-a6c5-451b-a6f0-4c0bc7dc4fb1" class="">aws 명령어 사용해서 csv파일 정보 입력, region, output format 입력
+                </p>
+                <blockquote id="9399b448-7197-411d-8a8b-441591b90d35" class="">aws configure</blockquote>
+                <figure id="7b49408d-51ef-46d7-896d-dcec767073ba" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/162c3aee-03f6-44c1-bbaa-f6e8c6f98cef/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/162c3aee-03f6-44c1-bbaa-f6e8c6f98cef/image.png" /></a>
+                </figure>
+                <h2 id="bee0776f-bddc-4148-9789-cd64a304faf0" class="">5. aws 명령어로 수동 동기화</h2>
+                <p id="9b2cdc36-203a-4908-8467-3cde25d3c3bc" class="">aws s3 sync [파일경로] s3://[s3경로]</p>
+                <figure id="5d37456b-b63a-477b-bfb2-1fc98ca7f521" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/3f2c9636-488d-41cd-9c90-bbfb5248eda4/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/3f2c9636-488d-41cd-9c90-bbfb5248eda4/image.png" /></a>
+                </figure>
+                <p id="1120bbfa-6673-457a-823b-0c6a11755289" class="">crontab을 이용하면 자동 동기화 가능</p>
+                <p id="69ea5d75-fe8c-437d-a6a1-1c0c9ad252c0" class="">
+                </p>
+                <h1 id="945dcffd-3e34-404d-81e4-e661d74ae946" class="">RDS</h1>
+                <hr id="48e65f37-d19b-457d-8e9c-d2e5a4bfc51e" />
+                <h1 id="194451b3-1451-4f60-b15e-ab77242401e1" class="">RDS</h1>
+                <p id="35e40603-1f5b-4f53-a13d-a396912bd6e3" class="">AWS에서 제공하는 데이터베이스 서비스로 Amazon Aurora, MySQL,
+                    mariaDB, PostgreSQL 등 다양한 엔진을 사용할 수 있다.</p>
+                <p id="cb8fea3f-3629-4969-80ba-a812d5961919" class="">자동 백업, 공간 확장 등 다양한 기능이 포함되어 있어 효율적으로 데이터베이스 관리할 수
+                    있다.</p>
+                <figure id="4ada9ff8-9e04-49a1-8f19-a88e076dee23" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/b1bf9b0f-e894-4a9e-a09d-d234f3587a69/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/b1bf9b0f-e894-4a9e-a09d-d234f3587a69/image.png" /></a>
+                </figure>
+                <h1 id="cea79d0c-591b-4ae9-8dba-1a0e4f1f6307" class="">RDS 생성</h1>
+                <h2 id="4fde00da-34bb-47fa-8f43-b5a616d33007" class="">세부 사항 설정</h2>
+                <p id="52a8a7c3-9018-4996-b9da-5d08379fc715" class="">데이터베이스 생성을 누른 후 원하는 조건에 맞게 세부사항 조정</p>
+                <p id="5053e603-ec2f-4519-9ad7-457b8b6fb591" class="">생성 옵션1. 표준 생성2. mariaDB3. 템플릿 - 프리티어4. 데이터베이스 이름/
+                    사용자 이름/ 패스워드 설정5. 스토리지 - 20G, 자동조정 비활성화6. 네트워크 - 기본VPC/ 퍼블릭/ 새 보안그룹</p>
+                <figure id="dd2167c6-6c16-4bec-b040-866481c93a4d" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/4c675f4a-60ff-4a1a-a07e-46aaadcd1ea7/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/4c675f4a-60ff-4a1a-a07e-46aaadcd1ea7/image.png" /></a>
+                </figure>
+                <h2 id="abc84dca-0cfb-42a1-81a2-6484c93aaf15" class="">완료</h2>
+                <p id="adf1a4a2-efac-463a-89a5-e9638be67133" class="">약 5분정도 기다리면 RDS 생성된다.</p>
+                <figure id="fd76c5b1-3a7d-4574-b7a7-d63d947fd25e" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/15c9a807-53ba-412e-9ee1-66440493a607/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/15c9a807-53ba-412e-9ee1-66440493a607/image.png" /></a>
+                </figure>
+                <p id="3ef71407-60c6-4dd5-a16c-3b664443a7e0" class="">
+                </p>
+                <h1 id="bdd78530-3c8a-4d56-9c08-0e0b0635f93d" class="">EC2 웹 서버 구축</h1>
+                <hr id="118a5a6e-4c08-4e24-be44-6bdff775869d" />
+                <h1 id="6786e463-0b91-4895-83a3-6a77a96eec37" class="">웹서버 구축</h1>
+                <p id="2d1ae1b9-7111-4262-a6d0-94a5e5a1aca4" class="">VPC 생성 후 웹 서버를 위한 보안 그룹을 설정한다.인스턴스 생성시 먼저 설정한 VPC,
+                    보안 그룹을 사용해서 생성한다.Powershell에서 ssh 통해 인스턴스 접속 후 웹 서버 구축</p>
+                <h1 id="ddfd6c31-8b3f-4a45-9813-6f4cc76a9231" class="">준비</h1>
+                <h2 id="74164d6e-0da9-40d8-8355-80f07f70ab25" class="">VPC 생성</h2>
+                <p id="abc94175-7d90-4290-b341-9e23a54419c7" class="">원하는 region에서 VPC 생성 (가용영역2, 퍼블릭, 프라이빗 서브넷 수 2)
+                    NAT, VPC 엔드포인트 없음 선택</p>
+                <figure id="5cc871a6-f887-4ca4-b9c5-0fd7197ab605" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/f34d82b4-288f-4d69-85fb-f65d996a3318/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/f34d82b4-288f-4d69-85fb-f65d996a3318/image.png" /></a>
+                </figure>
+                <h2 id="bd21f0e9-ad18-4fa1-bf55-e396f0b5e25d" class="">보안그룹 설정</h2>
+                <p id="abfbc181-c288-4f57-b0ce-a7f6006cb81a" class="">ssh, http, https를 위한 보안 그룹 설정 진행</p>
+                <figure id="9d41cc9d-ef6e-4aa6-a37f-c06c1d5c1751" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/1a3af4d6-92b7-4a1b-8553-47a034aaf495/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/1a3af4d6-92b7-4a1b-8553-47a034aaf495/image.png" /></a>
+                </figure>
+                <h2 id="13d650f2-d6d0-4a4a-b97a-a006811df861" class="">EC-2 생성 (VPC, 서브넷, 보안그룹 설정)</h2>
+                <p id="5a17cc4a-4c1d-4861-b5b2-afb16e70a986" class="">인스턴스 생성 시 서브넷, 보안 그룹 위에서 생성한 걸로 변경</p>
+                <p id="b1a9c466-d64b-4cff-bbca-ccab429dd607" class="">(VPC부터 설정해야 됨.)</p>
+                <figure id="d9ae5c7b-8932-4f22-bc09-a4f86e3706ac" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/9dfed5c4-8997-4102-a904-939419527118/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/9dfed5c4-8997-4102-a904-939419527118/image.png" /></a>
+                </figure>
+                <h1 id="ed404229-6004-46ee-97ba-663593e9f37a" class="">구축</h1>
+                <h2 id="9592e9a7-499c-438c-85ac-8c4d66f31fdb" class="">인스턴스 접속 후 필요 파일</h2>
+                <p id="175f1aa0-1dac-4354-9520-4065fea1d1b5" class="">powershell에서 진행</p>
+                <blockquote id="b9a73b4c-394b-433d-a110-c4716e6f1f04" class="">ssh -i KEY 이름 ec2-user@퍼블릭 IPyum install
+                    -y httpd php php-pear php-fpm php-mbstring php-mysql mariaDB</blockquote>
+                <h2 id="6220e0a6-477e-41e0-b06a-c1a48fcc6433" class="">html 파일 생성 후 확인</h2>
+                <p id="ce32ed77-2caa-466e-904a-6cdd4bae45d8" class="">인스턴스의 퍼블릭 IP를 통해 접속</p>
+                <blockquote id="dba7cff2-869f-418c-91db-fc25fd27463b" class="">echo &quot;test page&quot; &gt;
+                    /var/www/html/index.htmlsystemctl start httpd</blockquote>
+                <figure id="13648965-7df3-46d3-a680-6fbdc3411f77" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/93220b62-0f67-4d42-b2f7-7d9ce8df2228/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/93220b62-0f67-4d42-b2f7-7d9ce8df2228/image.png" /></a>
+                </figure>
+                <h2 id="7761b9e4-c5e4-4eef-b551-f2ce0acf8035" class="">php 파일 생성 후 확인</h2>
+                <p id="6d8db50b-6b31-46b3-b585-d499667821fc" class="">인스턴스의 퍼블릭 IP를 통해 접속</p>
+                <blockquote id="a326e9dd-52dc-4868-983c-acbf9d195d54" class="">echo &quot;&lt; ?php phpinfo()?&gt;&quot;
+                    ? /var/www/html/info.phpsystemctl start php-fpm</blockquote>
+                <figure id="dc6c20b9-6b8f-4152-9360-8d953c4cb629" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/976cfdeb-a803-45c7-9aaf-8e0595e02e10/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/976cfdeb-a803-45c7-9aaf-8e0595e02e10/image.png" /></a>
+                </figure>
+                <p id="936364d5-8e20-4a6d-9b97-9a761b1d0598" class="">
+                </p>
+                <p id="3f904ad7-99a3-4c28-85fb-ade1d7634cef" class="">
+                </p>
+                <h1 id="1c94d746-9e89-487f-9120-c90e34111108" class="">Loadbalance</h1>
+                <hr id="a1189bb2-3e35-42bc-9c29-2e2facf2adf9" />
+                <h1 id="781c57a6-e900-4da6-9a51-091344fb0d8b" class="">Loadbalancing</h1>
+                <p id="1c41a5bc-589e-4282-b3e1-854d5cc4e93d" class="">AWS EC-2 인스턴스에 Loadbalancing을 구성할 수 있게 서비스를 제공하고
+                    있다.</p>
+                <h1 id="3ebd72b2-1a56-4ce0-9260-2ff4a21c445d" class="">과정</h1>
+                <h2 id="d8977a03-8182-4d30-883f-7d28c22f1085" class="">VPC 생성</h2>
+                <p id="1455effb-2bdb-4855-8a93-271d916bc819" class="">Loadbalancing 진행할 VPC 생성</p>
+                <figure id="5d45929f-0f14-456c-970a-c7c0a7b17a5d" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/24c06d4f-da28-415c-b193-27be2be27ed6/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/24c06d4f-da28-415c-b193-27be2be27ed6/image.png" /></a>
+                </figure>
+                <h2 id="90f8415d-6816-4d11-b671-fb451c75ccec" class="">인스턴스 생성</h2>
+                <p id="6c5f32e7-a527-4cd3-970c-73a7a4d0514f" class="">첫 번째 인스턴스에서 네트워크에서 VPC, 보안그룹 변경 후 이미지 파일로 만들어서 두
+                    번째 인스턴스 생성</p>
+                <figure id="37037106-583c-4628-80b8-d0540005513b" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/c0adfbae-936e-4e18-91c8-90061265b426/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/c0adfbae-936e-4e18-91c8-90061265b426/image.png" /></a>
+                </figure>
+                <p id="7d24b35d-946b-4d1c-aa41-bc76b4ce8fd9" class="">이 후 ssh 접속 후 httpd 설정 및 페이지 작성</p>
+                <blockquote id="77a481f2-cae0-4844-9422-5e5de97550cc" class="">sudo -iyum install -y httpdsystemctl
+                    start httpdsystemctl enable httpdecho &quot;first-page&quot; &gt; /var/www/html/index.html
+                </blockquote>
+                <h2 id="9503cf22-8c29-4ec5-9724-16afd9a5da90" class="">Loadbalancing target 생성 및 인스턴스 추가</h2>
+                <p id="59572e94-09ad-406e-87b8-92abc7ecc646" class="">이전에 만들어 놓은 인스턴스 추가</p>
+                <figure id="884f3e1d-1c46-46a2-8716-03ea250549eb" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/787d9d96-e91d-4cb7-8222-717485da154f/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/787d9d96-e91d-4cb7-8222-717485da154f/image.png" /></a>
+                </figure>
+                <figure id="5c1e95e5-75cd-4995-a4aa-426fea253352" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/87637eeb-5242-4b4c-bd40-8cc911baa5c7/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/87637eeb-5242-4b4c-bd40-8cc911baa5c7/image.png" /></a>
+                </figure>
+                <h2 id="19026d5e-a45c-435a-8415-6176a0af0eb5" class="">lb 생성</h2>
+                <p id="77800d68-cb1e-4551-a7df-c6fdaeeb416d" class="">생성한 VPC 선택후 public 서브넷 선택</p>
+                <figure id="103d0a54-04bb-4534-abe3-186306d61f4e" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/db6e014a-2799-44d5-bea8-ed931cba4d00/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/db6e014a-2799-44d5-bea8-ed931cba4d00/image.png" /></a>
+                </figure>
+                <h2 id="4bb6f1ca-dbca-4d03-867c-a4589566cf01" class="">접속 확인</h2>
+                <p id="ef60c4b3-f040-4476-ae2a-4ae41a54f6e1" class="">Loadbalance의 url을 이용해서 접속</p>
+                <figure id="89ca981a-0cba-4cc9-97b4-68276d65e287" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/249c88a9-a4c9-4159-944c-ba8163de4c68/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/249c88a9-a4c9-4159-944c-ba8163de4c68/image.png" /></a>
+                </figure>
+                <h1 id="629b0f17-1032-43ed-aa87-98bea695e6dd" class="">Auto Scaling</h1>
+                <hr id="6e89e213-d2da-42fd-88b4-9b0dc3e24670" />
+                <h1 id="9c2458c0-73bb-4482-84bd-9213b34cdb8b" class="">Auto Scaling</h1>
+                <p id="e77e7988-fa75-48b6-82a2-029394731b36" class="">서버 구성 시 서비스가 지속적으로 제공될 수 있는 것이 중요하다. Auto Scaling은
+                    서버에 부하가 올 경우 다운되는 것 을 방지하기 위해 인스턴스를 자동으로 늘려주는 서비스이다.</p>
+                <h1 id="370de535-44f8-4a93-bceb-7c1e86e05834" class="">과정</h1>
+                <h2 id="30eff223-5f64-4ab5-a4c9-6b22199a4c49" class="">시작 구성 생성</h2>
+                <p id="ede70a38-c765-43cc-bb9e-881ae23fa5ca" class="">이미지, 보안 그룹, 키페어 등.. 필요한 정보 작성</p>
+                <figure id="60c15158-b584-42ed-bd10-f6ad8399925d" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/5c725800-5b5c-46d9-8c57-1bb916d47f33/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/5c725800-5b5c-46d9-8c57-1bb916d47f33/image.png" /></a>
+                </figure>
+                <h2 id="bb7f2253-1fff-4052-8b04-d0a31da26c14" class="">Auto Scaling 생성</h2>
+                <p id="d2bf650f-be1f-40d5-be29-e63e2f7722cb" class="">1단계 ~ 7단계를 거쳐 생성</p>
+                <h3 id="1d3000a1-f10f-4065-8a90-ed89a356ce1b" class="">1단계 - 시작 템플릿 또는 구성 선택</h3>
+                <figure id="2ba50143-dcd8-4a99-bfee-8d4ad289057a" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/47967020-71ca-4201-8532-e8d16cc45065/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/47967020-71ca-4201-8532-e8d16cc45065/image.png" /></a>
+                </figure>
+                <h3 id="0aecb344-ed53-4c96-a1c3-7247c6464c18" class="">2단계 - 인스턴스 시작 옵션 선택</h3>
+                <p id="c1f3c461-2797-4042-8dd0-f03d65ddb012" class="">VPC, 서브넷 설정</p>
+                <figure id="ef566aab-8f25-403f-a259-4462e5a274b3" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/11b59166-fdb1-45cc-8e93-1ed217f44710/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/11b59166-fdb1-45cc-8e93-1ed217f44710/image.png" /></a>
+                </figure>
+                <h3 id="b29c844e-0c09-4d7a-bcda-121d268f2f88" class="">3단계 - 고급 옵션 구성</h3>
+                <p id="e4cd9f82-2795-4b6e-a529-d8d649949649" class="">로드밸런스 연결 및 모니터링 설정</p>
+                <figure id="447534df-8939-4872-8afd-7af2091242da" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/1311f3a3-5d7f-4f7a-9fb9-2355702387a4/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/1311f3a3-5d7f-4f7a-9fb9-2355702387a4/image.png" /></a>
+                </figure>
+                <h3 id="ea9732c8-1154-4c04-8d34-4ecccbecc979" class="">4단계 - 그룹 크기 및 크기 조정 정책 구성</h3>
+                <p id="381cd177-dbfc-420e-8aea-675502568c50" class="">Auto Scaling 정책 설정</p>
+                <figure id="15269649-3757-42dd-9d0f-1f1cdb98f6d7" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/bb0edb1c-e397-4bc1-9105-0578adc4038a/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/bb0edb1c-e397-4bc1-9105-0578adc4038a/image.png" /></a>
+                </figure>
+                <p id="30c13e6a-a365-4eb6-a55b-8bd7c532f065" class="">5 ~ 6 단계는 임의로 설정해주면 된다.</p>
+                <h3 id="8b4089dd-b514-46e4-bd61-02c8f9b6c0a8" class="">7단계 - 검토</h3>
+                <p id="66356a2e-6fed-4550-89b4-223688ff565e" class="">지금 까지 설정한 내용을 다시 확인하는 부분이다.</p>
+                <p id="5d6a8d95-5d96-41bc-9f31-b8d090949552" class="">검토 후 Auto Scaling Group 생성</p>
+                <figure id="136c46f4-eaef-4792-bd8d-81d40c7fa73d" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/bc643249-c8da-4a12-97bf-a34fc892f9cd/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/bc643249-c8da-4a12-97bf-a34fc892f9cd/image.png" /></a>
+                </figure>
+                <figure id="9b3cf475-028f-4749-bcfa-b8ce26f80a70" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/17d37031-b549-41d8-915f-6d60e140a9c5/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/17d37031-b549-41d8-915f-6d60e140a9c5/image.png" /></a>
+                </figure>
+                <h2 id="02653c4c-03fa-4077-88bb-0987b0220ba4" class="">확인</h2>
+                <p id="8da4bb16-4afe-4a12-939a-cf8acfaf9371" class="">인스턴스가 늘어나는 것을 확인하기 위해 부하를 준다.</p>
+                <blockquote id="fc438f3e-0fb5-4670-9d85-62d50d8590bd" class="">sha256sum /dev/zero</blockquote>
+                <figure id="056e6b3d-558c-4ef2-8415-924439f82ae6" class="image"><a
+                        href="https://velog.velcdn.com/images/wkdrnsms00/post/98cde8c1-76ce-4e40-bd5b-46095aab19fe/image.png"><img
+                            src="https://velog.velcdn.com/images/wkdrnsms00/post/98cde8c1-76ce-4e40-bd5b-46095aab19fe/image.png" /></a>
+                </figure>
+                <p id="83859b4a-bc62-481c-9fd5-9b01b32a3454" class="">
+                </p>
+            </div>
+        </article>
+    </div>
+</body>
+
+</html>
