@@ -10,7 +10,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("wkdrnsms00/flask-jenkins")
+       app = docker.build("wkdrnsms00/mz-jenkins")
     }
 
     stage('Test image') {
